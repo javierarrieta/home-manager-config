@@ -63,6 +63,7 @@ in {
     pkgs.k9s
     pkgs.kubectl
     pkgs.kubectx
+    pkgs.lsd
 
     pkgs.opam
   ];
@@ -99,7 +100,7 @@ in {
   #  /etc/profiles/per-user/$user/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
-    # EDITOR = "emacs";
+    EDITOR = "nvim";
   };
 
   # Let Home Manager install and manage itself.
@@ -174,7 +175,6 @@ in {
       };
       "gl" = "git log";
       "gr" = "git rebase";
-      "gits" = "git status";
       "gs" = "git status";
       "gss" = "git status --short";
 
@@ -190,12 +190,12 @@ in {
       # "el" = "erd -H -L 1";
       # "ela" = "erd -H -L 1 -.";
 
-      # "ls" = "lsd";
-      # "lsa" = "lsd -a";
-      # "ll" = "lsd -l";
-      # "lla" = "lsd -la";
-      # "lt" = "ls --tree";
-      # "l." = "lsd -d .* --color=auto";
+      "ls" = "lsd";
+      "lsa" = "lsd -a";
+      "ll" = "lsd -l";
+      "lla" = "lsd -la";
+      "lt" = "ls --tree";
+      "l." = "lsd -d .* --color=auto";
       "z" = "zoxide";
 
       # "sshnas" = "ssh xxx@192.168.50.237";
@@ -232,6 +232,9 @@ in {
       };
       alias = {
         ss = "status --short";
+        pf = "pul --ff-only";
+        ci = "commit";
+        co = "checkout";
       };
       pull.rebase = "false";
       credential.helper = "osxkeychain";
@@ -318,9 +321,9 @@ in {
       el = "erd -H -L 1";
       ela = "erd -H -L 1 -.";
 
-      # ls = "lsd";
-      # lsa = "lsd -a";
-      # ll = "lsd -l";
+      ls = "lsd";
+      lsa = "lsd -a";
+      ll = "lsd -l";
       lla = "ls -la";
       lt = "ls --tree";
 
