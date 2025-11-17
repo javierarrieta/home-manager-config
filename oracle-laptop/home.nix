@@ -1,10 +1,13 @@
-{ config, pkgs, ... }:
+{ config, username, pkgs, ... }:
 
-{
+let 
+  inherit (import ~/.config/options.nix)
+    username userHome githubUser gitName gitEmail;
+in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
-  home.username = "javier";
-  home.homeDirectory = "/Users/javier";
+  home.username = "${username}";
+  home.homeDirectory = "${userHome}";
 
   # This value determines the Home Manager release that your configuration is
   # compatible with. This helps avoid breakage when a new Home Manager release
@@ -93,7 +96,7 @@
   #
   # or
   #
-  #  /etc/profiles/per-user/javier/etc/profile.d/hm-session-vars.sh
+  #  /etc/profiles/per-user/$user/etc/profile.d/hm-session-vars.sh
   #
   home.sessionVariables = {
     # EDITOR = "emacs";
@@ -116,18 +119,15 @@
       set fish_greeting
 
       fish_vi_key_bindings
-
-      # Location for nvm directory, since bass assumes ~/.nvm
-      set -gx NVM_DIR ~/.config/nvm
     '';
     plugins = [
-      {
-        name = "tide";
-        src = pkgs.fishPlugins.tide;
-        # one-line output: tide configure --auto --style=Lean --prompt_colors='True color'
-        # --show_time=No --lean_prompt_height='Two lines' --prompt_connection=Disconnected
-        # --prompt_spacing=Compact --icons='Few icons' --transient=Yes
-      }
+      # {
+      #   name = "tide";
+      #   src = pkgs.fishPlugins.tide;
+      #   # one-line output: tide configure --auto --style=Lean --prompt_colors='True color'
+      #   # --show_time=No --lean_prompt_height='Two lines' --prompt_connection=Disconnected
+      #   # --prompt_spacing=Compact --icons='Few icons' --transient=Yes
+      # }
       {
         name = "bass";
         src = pkgs.fishPlugins.bass;
@@ -184,20 +184,18 @@
         setCursor = true;
         expansion = "| grep '%'";
       };
-
-      "sv" = "source venv/bin/activate.fish";
     };
     shellAliases = {
 
-      "el" = "erd -H -L 1";
-      "ela" = "erd -H -L 1 -.";
+      # "el" = "erd -H -L 1";
+      # "ela" = "erd -H -L 1 -.";
 
-      "ls" = "lsd";
-      "lsa" = "lsd -a";
-      "ll" = "lsd -l";
-      "lla" = "lsd -la";
+      # "ls" = "lsd";
+      # "lsa" = "lsd -a";
+      # "ll" = "lsd -l";
+      # "lla" = "lsd -la";
       # "lt" = "ls --tree";
-      "l." = "lsd -d .* --color=auto";
+      # "l." = "lsd -d .* --color=auto";
       "z" = "zoxide";
 
       # "sshnas" = "ssh xxx@192.168.50.237";
@@ -229,16 +227,16 @@
     enable = true;
     settings = {
       user = {
-        email = "javier@techdelivery.es";
-        name = "Javier Arrieta";
+        email = "${gitEmail}";
+        name = "${gitName}";
       };
       alias = {
         ss = "status --short";
       };
       pull.rebase = "false";
       credential.helper = "osxkeychain";
-      init.defaultBranch = "main";
-      github.user = "javierarrieta";
+      init.defaultBranch = "master";
+      github.user = "${githubUser}";
     };
   };
 
@@ -320,9 +318,9 @@
       el = "erd -H -L 1";
       ela = "erd -H -L 1 -.";
 
-      ls = "lsd";
-      lsa = "lsd -a";
-      ll = "lsd -l";
+      # ls = "lsd";
+      # lsa = "lsd -a";
+      # ll = "lsd -l";
       lla = "ls -la";
       lt = "ls --tree";
 
