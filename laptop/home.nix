@@ -1,0 +1,340 @@
+{ config, pkgs, ... }:
+
+{
+  # Home Manager needs a bit of information about you and the paths it should
+  # manage.
+  home.username = "javier";
+  home.homeDirectory = "/Users/javier";
+
+  # This value determines the Home Manager release that your configuration is
+  # compatible with. This helps avoid breakage when a new Home Manager release
+  # introduces backwards incompatible changes.
+  #
+  # You should not change this value, even if you update Home Manager. If you do
+  # want to update the value, then make sure to first check the Home Manager
+  # release notes.
+  home.stateVersion = "25.05"; # Please read the comment before changing.
+
+  # The home.packages option allows you to install Nix packages into your
+  # environment.
+  home.packages = [
+    # # Adds the 'hello' command to your environment. It prints a friendly
+    # # "Hello, world!" when run.
+    # pkgs.hello
+
+    # # It is sometimes useful to fine-tune packages, for example, by applying
+    # # overrides. You can do that directly here, just don't forget the
+    # # parentheses. Maybe you want to install Nerd Fonts with a limited number of
+    # # fonts?
+    # (pkgs.nerdfonts.override { fonts = [ "FantasqueSansMono" ]; })
+
+    # # You can also create simple shell scripts directly inside your
+    # # configuration. For example, this adds a command 'my-hello' to your
+    # # environment:
+    # (pkgs.writeShellScriptBin "my-hello" ''
+    #   echo "Hello, ${config.home.username}!"
+    # '')
+    pkgs.htop
+    pkgs.git
+    pkgs.fish
+    pkgs.fishPlugins.bass
+    pkgs.fishPlugins.tide
+    pkgs.fishPlugins.fzf
+    pkgs.curl
+    pkgs.wget
+    pkgs.tmux
+    pkgs.neovim
+    pkgs.btop
+    pkgs.ripgrep
+    pkgs.yq
+    pkgs.jq
+    pkgs.starship
+    pkgs.rustup
+    pkgs.python313
+    pkgs.llama-cpp
+    pkgs.fzf
+    pkgs.zoxide
+    pkgs.bash
+    pkgs.zsh
+    pkgs.bat
+    pkgs.k9s
+    pkgs.kubectl
+    pkgs.kubectx
+
+    pkgs.opam
+  ];
+
+  # Home Manager is pretty good at managing dotfiles. The primary way to manage
+  # plain files is through 'home.file'.
+  home.file = {
+    # # Building this configuration will create a copy of 'dotfiles/screenrc' in
+    # # the Nix store. Activating the configuration will then make '~/.screenrc' a
+    # # symlink to the Nix store copy.
+    # ".screenrc".source = dotfiles/screenrc;
+
+    # # You can also set the file content immediately.
+    # ".gradle/gradle.properties".text = ''
+    #   org.gradle.console=verbose
+    #   org.gradle.daemon.idletimeout=3600000
+    # '';
+  };
+
+  # Home Manager can also manage your environment variables through
+  # 'home.sessionVariables'. These will be explicitly sourced when using a
+  # shell provided by Home Manager. If you don't want to manage your shell
+  # through Home Manager then you have to manually source 'hm-session-vars.sh'
+  # located at either
+  #
+  #  ~/.nix-profile/etc/profile.d/hm-session-vars.sh
+  #
+  # or
+  #
+  #  ~/.local/state/nix/profiles/profile/etc/profile.d/hm-session-vars.sh
+  #
+  # or
+  #
+  #  /etc/profiles/per-user/javier/etc/profile.d/hm-session-vars.sh
+  #
+  home.sessionVariables = {
+    # EDITOR = "emacs";
+  };
+
+  # Let Home Manager install and manage itself.
+  # programs.bash = {
+  #   interactiveShellInit = ''
+  #     if [[ $(${pkgs.procps}/bin/ps --no-header --pid=$PPID --format=comm) != "fish" && -z ''${BASH_EXECUTION_STRING} ]]
+  #     then
+  #       shopt -q login_shell && LOGIN_OPTION='--login' || LOGIN_OPTION=""
+  #       exec ${pkgs.fish}/bin/fish $LOGIN_OPTION
+  #     fi
+  #   '';
+  # };
+
+  programs.fish = {
+    enable = true;
+    interactiveShellInit = ''
+      set fish_greeting
+
+      fish_vi_key_bindings
+
+      # Location for nvm directory, since bass assumes ~/.nvm
+      set -gx NVM_DIR ~/.config/nvm
+    '';
+    plugins = [
+      {
+        name = "tide";
+        src = pkgs.fishPlugins.tide;
+        # one-line output: tide configure --auto --style=Lean --prompt_colors='True color'
+        # --show_time=No --lean_prompt_height='Two lines' --prompt_connection=Disconnected
+        # --prompt_spacing=Compact --icons='Few icons' --transient=Yes
+      }
+      {
+        name = "bass";
+        src = pkgs.fishPlugins.bass;
+      }
+      # {
+      #   name = "tide";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "ilancosman";
+      #     repo = "tide";
+      #     rev = "a34b0c2809f665e854d6813dd4b052c1b32a32b4";
+      #     hash = "sha256-ZyEk/WoxdX5Fr2kXRERQS1U1QHH3oVSyBQvlwYnEYyc=";
+      #   };
+      # }
+      # {
+      #   name = "catppuccin_fish";
+      #   src = pkgs.fetchFromGitHub {
+      #     owner = "catppuccin";
+      #     repo = "fish";
+      #     rev = "a3b9eb5eaf2171ba1359fe98f20d226c016568cf";
+      #     hash = "sha256-shQxlyoauXJACoZWtRUbRMxmm10R8vOigXwjxBhG8ng=";
+      #   };
+      # }
+    ];
+    shellAbbrs = {
+      # "cat" = "bat";
+      "cd" = "z";
+      # "cdi" = "zi";
+      # "du" = "dust";
+      "ga" = {
+        position = "command";
+        expansion = "git add";
+      };
+      "gita" = "git add";
+      "gch" = "git checkout";
+      "gitcm" = {
+        position = "command";
+        setCursor = true;
+        expansion = "git commit -m \"%\"";
+      };
+      "gcm" = {
+        position = "command";
+        setCursor = true;
+        expansion = "git commit -m \"%\"";
+      };
+      "gl" = "git log";
+      "gr" = "git rebase";
+      "gits" = "git status";
+      "gs" = "git status";
+      "gss" = "git status --short";
+
+      # Pipe to grep and place cursor at %.
+      "G" = {
+        position = "anywhere";
+        setCursor = true;
+        expansion = "| grep '%'";
+      };
+
+      "sv" = "source venv/bin/activate.fish";
+    };
+    shellAliases = {
+
+      "el" = "erd -H -L 1";
+      "ela" = "erd -H -L 1 -.";
+
+      "ls" = "lsd";
+      "lsa" = "lsd -a";
+      "ll" = "lsd -l";
+      "lla" = "lsd -la";
+      # "lt" = "ls --tree";
+      "l." = "lsd -d .* --color=auto";
+      "z" = "zoxide";
+
+      # "sshnas" = "ssh xxx@192.168.50.237";
+    };
+  };
+
+  programs.fzf = {
+    enable = true;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
+    colors = {
+      # Catppuccin-Latte
+      bg = "#eff1f5";
+      "bg+" = "#ccd0da";
+      spinner = "#dc8a78";
+      hl = "#d20f39";
+      fg = "#4c4f69";
+      header = "#d20f39";
+      info = "#8839ef";
+      pointer = "#dc8a78";
+      marker = "#dc8a78";
+      "fg+" = "#4c4f69";
+      "prompt" = "#8839ef";
+      "hl+" = "#d20f39";
+    };
+  };
+
+  programs.git = {
+    enable = true;
+    settings = {
+      user = {
+        email = "javier@techdelivery.es";
+        name = "Javier Arrieta";
+      };
+      alias = {
+        ss = "status --short";
+      };
+      pull.rebase = "false";
+      credential.helper = "osxkeychain";
+      init.defaultBranch = "main";
+      github.user = "javierarrieta";
+    };
+  };
+
+  programs.difftastic = {
+    enable = true;
+  };
+
+  programs.pyenv = {
+    enable = true;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
+  };
+
+  programs.zoxide = {
+    enable = true;
+    enableFishIntegration = true;
+    enableZshIntegration = true;
+    # options = ["--cmd cd"];
+    # Since I want to use *both* z/zi and cd/cdi, I do not use the init option to setup
+    # cd/cdi aliases. Passing `--cmd cd` to zoxide in fish gets rid of the z prefix.
+    # Instead, I only use that method for zsh, and I use manual abbreviations for fish.
+  };
+
+  programs.zsh = {
+    enable = true;
+    # dotDir = ".config/zsh";
+    # history.path = "$ZDOTDIR/.zsh_history";
+    enableCompletion = true;
+    autosuggestion.enable = true;
+    syntaxHighlighting.enable = true;
+    # plugins = [
+    #   {
+    #     name = "powerlevel10k";
+    #     src = pkgs.zsh-powerlevel10k;
+    #     file = "share/zsh-powerlevel10k/powerlevel10k.zsh-theme";
+    #   }
+    #   {
+    #     name = "powerlevel10k-config";
+    #     src = ./dots;
+    #     file = ".p10k.zsh";
+    #   }
+    # ];
+    initContent = ''
+
+      export PATH=$HOME/.nix-profile/bin:$PATH
+
+      export PATH=/nix/var/nix/profiles/default/bin:$PATH
+
+      #THIS MUST BE AT THE END OF THE FILE FOR SDKMAN TO WORK!!!
+      export SDKMAN_DIR="$HOME/.sdkman"
+      [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
+
+      if [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]
+      then
+          exec fish -l
+      fi
+
+      eval "$(zoxide init --cmd cd zsh)"
+    '';
+    shellAliases = {
+
+      # # # # # # #
+      # Git Aliases
+      # # # # # # #
+      gl = "git log";
+      gs = "git status";
+      gits = "git status";
+      gitf = "git fetch";
+      gita = "git add";
+      gitcm = "git commit -m";
+      gcm = "git commit -m";
+      gch = "git checkout";
+
+      # binary aliases
+      cat = "bat";
+
+      du = "dust";
+
+      el = "erd -H -L 1";
+      ela = "erd -H -L 1 -.";
+
+      ls = "lsd";
+      lsa = "lsd -a";
+      ll = "lsd -l";
+      lla = "ls -la";
+      lt = "ls --tree";
+
+      python = "python3";
+      pip = "pip3";
+      pym = "python3 -m";
+
+      vnv = "python3 -m venv venv && source venv/bin/activate && pip install --upgrade pip";
+      # uvv = "uv venv venv"; # Create new virtual environment in ./venv/
+      # sv = "source *venv*/bin/activate";
+    };
+  };
+
+  programs.home-manager.enable = true;
+}
