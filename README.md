@@ -3,17 +3,20 @@
 Create an `options.nix` to define the custom variables like:
 ```nix
 let
-  username   = "me";
-  userHome   = "/home/${username}";
-  gitName    = "John Doe";
-  gitEmail   = "john.doe@example.org";
-  githubUser = "jdoe";
+  username         = "me";
+  userHome         = "/home/${username}";
+  gitName          = "John Doe";
+  gitEmail         = "john.doe@example.org";
+  gitDefaultBranch = "master";
+  githubUser       = "jdoe";
+
 in {
-  username   = username;
-  userHome   = userHome;
-  gitName    = gitName;
-  gitEmail   = gitEmail;
-  githubUser = githubUser;
+  username         = username;
+  userHome         = userHome;
+  gitName          = gitName;
+  gitEmail         = gitEmail;
+  gitDefaultBranch = gitDefaultBranch;
+  githubUser       = githubUser;
 }
 ```
 

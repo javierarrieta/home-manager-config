@@ -1,8 +1,8 @@
-{ config, username, pkgs, ... }:
+{ config, username, pkgs, lib, ... }:
 
 let 
   inherit (import ~/.config/options.nix)
-    username userHome githubUser gitName gitEmail;
+    username userHome gitName gitEmail gitDefaultBranch githubUser;
 in {
   # Home Manager needs a bit of information about you and the paths it should
   # manage.
@@ -64,8 +64,14 @@ in {
     pkgs.kubectl
     pkgs.kubectx
     pkgs.lsd
+    pkgs.postgresql
+
+    pkgs.age
+    pkgs.sops
 
     pkgs.opam
+
+    pkgs.python313Packages.wakeonlan
   ];
 
   # Home Manager is pretty good at managing dotfiles. The primary way to manage
@@ -120,6 +126,8 @@ in {
       set fish_greeting
 
       fish_vi_key_bindings
+
+      starship init fish | source
     '';
     plugins = [
       # {
@@ -198,8 +206,28 @@ in {
       "l." = "lsd -d .* --color=auto";
       "z" = "zoxide";
 
+      "k" = "kubectl";
+      "kx" = "kubectx";
+
       # "sshnas" = "ssh xxx@192.168.50.237";
     };
+  };
+
+  programs.starship = {
+    enable = true; 
+    enableFishIntegration = true; 
+    settings = { 
+      add_newline = false; 
+      hostname.style = "bold green"; # don't like the default 
+      username.style_user = "bold blue"; # don't like the default 
+      format = lib.concatStrings [ "$all" "$line_break" "$package" "$line_break" "$character" ]; 
+      scan_timeout = 2000; 
+      character = { 
+        success_symbol = "➜"; 
+        error_symbol = "➜"; 
+      };
+    }; 
+    enableTransience = true; 
   };
 
   programs.fzf = {
@@ -238,7 +266,7 @@ in {
       };
       pull.rebase = "false";
       credential.helper = "osxkeychain";
-      init.defaultBranch = "master";
+      init.defaultBranch = "${gitDefaultBranch}";
       github.user = "${githubUser}";
     };
   };
@@ -330,6 +358,10 @@ in {
       python = "python3";
       pip = "pip3";
       pym = "python3 -m";
+
+
+      k  = "kubectl";
+      kx = "kubectx";
 
       vnv = "python3 -m venv venv && source venv/bin/activate && pip install --upgrade pip";
       # uvv = "uv venv venv"; # Create new virtual environment in ./venv/
