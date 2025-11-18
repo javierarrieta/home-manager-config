@@ -69,6 +69,8 @@ in {
     pkgs.age
     pkgs.sops
 
+    pkgs.neofetch
+
     pkgs.opam
 
     pkgs.python313Packages.wakeonlan
