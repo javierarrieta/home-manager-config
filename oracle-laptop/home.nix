@@ -185,6 +185,8 @@ in {
       "gr" = "git rebase";
       "gs" = "git status";
       "gss" = "git status --short";
+      "k9st" = "k9s --context Stage/OC1";
+      "k9pr" = "k9s --context Prod/OC";
 
       # Pipe to grep and place cursor at %.
       "G" = {
@@ -225,6 +227,10 @@ in {
       character = { 
         success_symbol = "➜"; 
         error_symbol = "➜"; 
+      };
+      kubernetes = {
+        format = "on [⛵ ($namespace in )$context \($namespace\)](dimmed green) ";
+        disabled = false;
       };
     }; 
     enableTransience = true; 
