@@ -1,5 +1,9 @@
 # Instructions
 
+Install nix from https://nixos.org/download/
+
+Install home manager from https://nix-community.github.io/home-manager/index.xhtml#sec-install-standalone
+
 Create an `options.nix` to define the custom variables like:
 ```nix
 let
@@ -7,7 +11,7 @@ let
   userHome         = "/home/${username}";
   gitName          = "John Doe";
   gitEmail         = "john.doe@example.org";
-  gitDefaultBranch = "master";
+  gitDefaultBranch = "main";
   githubUser       = "jdoe";
 
 in {
