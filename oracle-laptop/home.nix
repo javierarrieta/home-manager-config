@@ -238,6 +238,18 @@ in {
         success_symbol = "➜"; 
         error_symbol = "➜"; 
       };
+      directory = {
+        truncate_to_repo = false;
+        truncation_symbol = "…/";
+        fish_style_pwd_dir_length = 1;
+        style = "main_color";
+        format = "[](bg:$style fg:black)[$path[$read_only]($read_only_style)](bg:$style)[](fg:$style) ";
+
+      };
+      sudo = {
+        disabled = false;
+        symbol = "🪄  ";
+      };
       kubernetes = {
         format = "on [⛵ ($namespace in )$context \($namespace\)](dimmed green) ";
         disabled = false;
