@@ -127,6 +127,9 @@ in {
 
       fish_vi_key_bindings
 
+      test -e ~/.venv/default/bin/activate.fish || venv ~/.venv/default
+      source ~/.venv/default/bin/activate.fish
+
       starship init fish | source
     '';
     plugins = [
@@ -185,8 +188,11 @@ in {
       "gr" = "git rebase";
       "gs" = "git status";
       "gss" = "git status --short";
-      "k9st" = "k9s --context Stage/OC1";
-      "k9pr" = "k9s --context Prod/OC";
+      "k9st" = "k9s --namespace stream-app --context Stage/OC1/";
+      "k9pr" = "k9s --namespace stream-app --context Prod/OC";
+      "pf-grafana" = "echo 'Open grafana at http://localhost:9091/' && kubectl port-forward service/grafana 9091:3000 -n octo-system --context";
+      "pf-prom" = "echo 'Open grafana at http://localhost:9093/' && kubectl port-forward service/prometheus-k8s 9093:9090 -n octo-system --context";
+      "pf-akhq" = "echo 'Open grafana at http://localhost:9092/' && kkubectl port-forward service/akhq 9092:80 -n kafka --context";
 
       # Pipe to grep and place cursor at %.
       "G" = {
@@ -210,6 +216,8 @@ in {
 
       "k" = "kubectl";
       "kx" = "kubectx";
+
+      "venv" = "python3 -m venv";
 
       # "sshnas" = "ssh xxx@192.168.50.237";
     };
@@ -373,7 +381,7 @@ in {
       k  = "kubectl";
       kx = "kubectx";
 
-      vnv = "python3 -m venv venv && source venv/bin/activate && pip install --upgrade pip";
+      # vnv = "source ~/.venv/bin/activate && pip install --upgrade pip";
       # uvv = "uv venv venv"; # Create new virtual environment in ./venv/
       # sv = "source *venv*/bin/activate";
     };
