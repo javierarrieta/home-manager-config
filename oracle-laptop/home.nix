@@ -240,6 +240,41 @@ in {
         format = "on [⛵ ($namespace in )$context \($namespace\)](dimmed green) ";
         disabled = false;
       };
+      battery = {
+        full_symbol = "🔋";
+        charging_symbol = "🔌";
+        discharging_symbol = "⚡";
+        display = [{
+          threshold = 30;
+          style = "bold red";
+        }];
+        disabled = false;
+      };
+      python = {
+        format = "[$symbol$pyenv_prefix($version )(($virtualenv) )]($style)";
+        python_binary = [
+          "python"
+          "python3"
+          "python2"
+        ];
+        pyenv_prefix = "pyenv ";
+        pyenv_version_name = true;
+        style = "yellow bold";
+        symbol = "🐍 ";
+        version_format = "v$raw";
+        disabled = false;
+        detect_extensions = ["py"];
+        detect_files = [
+          "requirements.txt"
+          ".python-version"
+          "pyproject.toml"
+          "Pipfile"
+          "tox.ini"
+          "setup.py"
+          "__init__.py"
+        ];
+        detect_folders = [];
+      };
     }; 
     enableTransience = true; 
   };
