@@ -221,6 +221,8 @@ in {
 
       "venv" = "python3 -m venv";
 
+      "rebase-pr" = "git fetch && git merge origin/master && git push";
+
       # "sshnas" = "ssh xxx@192.168.50.237";
     };
   };
