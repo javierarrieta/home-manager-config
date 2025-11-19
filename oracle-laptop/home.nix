@@ -325,7 +325,7 @@ in {
       };
       alias = {
         ss  = "status --short";
-        pf  = "pul --ff-only";
+        pf  = "pull --ff-only";
         ci  = "commit";
         co  = "checkout";
         lg1 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all";
