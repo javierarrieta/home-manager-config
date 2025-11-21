@@ -65,6 +65,7 @@ in {
     pkgs.kubectx
     pkgs.lsd
     pkgs.postgresql
+    pkgs.difftastic
 
     pkgs.age
     pkgs.sops
