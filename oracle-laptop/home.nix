@@ -66,6 +66,7 @@ in {
     pkgs.lsd
     pkgs.postgresql
     pkgs.difftastic
+    pkgs.dyff
 
     pkgs.age
     pkgs.sops
@@ -195,7 +196,7 @@ in {
       "k9pr" = "k9s --namespace stream-app --context Prod/OC";
       "pf-grafana" = "echo 'Open grafana at http://localhost:9091/' && kubectl port-forward service/grafana 9091:3000 -n octo-system --context";
       "pf-prom" = "echo 'Open grafana at http://localhost:9093/' && kubectl port-forward service/prometheus-k8s 9093:9090 -n octo-system --context";
-      "pf-akhq" = "echo 'Open grafana at http://localhost:9092/' && kkubectl port-forward service/akhq 9092:80 -n kafka --context";
+      "pf-akhq" = "echo 'Open grafana at http://localhost:9092/' && kubectl port-forward service/akhq 9092:80 -n kafka --context";
 
       # Pipe to grep and place cursor at %.
       "G" = {
