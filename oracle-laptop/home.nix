@@ -1,4 +1,4 @@
-{ config, username, pkgs, lib, ... }:
+{ config, username, pkgs, lib, nixpgks, ... }:
 
 let 
   inherit (import ~/.config/options.nix)
@@ -61,12 +61,13 @@ in {
     pkgs.zsh
     pkgs.bat
     pkgs.k9s
-    pkgs.kubectl
+    # pkgs.kubectl # included in orbstack
     pkgs.kubectx
     pkgs.lsd
     pkgs.postgresql
     pkgs.difftastic
     pkgs.dyff
+    pkgs.nmap
 
     pkgs.age
     pkgs.sops
@@ -74,6 +75,9 @@ in {
     pkgs.neofetch
 
     pkgs.opam
+
+    pkgs.orbstack
+    pkgs.vscode
 
     pkgs.python313Packages.wakeonlan
   ];
@@ -439,6 +443,8 @@ in {
       # sv = "source *venv*/bin/activate";
     };
   };
+
+  nixpkgs.config.allowUnfree = true;
 
   programs.home-manager.enable = true;
 }
