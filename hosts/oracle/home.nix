@@ -4,13 +4,16 @@ let
   # Import host-specific options
   userOptions = import ./userOptions.nix;
   inherit (userOptions) username userHome gitName gitEmail gitDefaultBranch githubUser;
-
-  # Base module
-  baseModule = import ../../modules/base.nix;
-
 in
 {
-  imports = [ baseModule ];
+  imports = [
+    # Import the base module normally
+    ../../modules/base.nix
+  ];
+
+  # Use _module.args to pass the data globally to all imported modules
+  # 'options' will now be available as an argument named 'options' in base.nix
+  _module.args.userOptions = userOptions;
 
   # Override base options with host-specific values
   home.username = username;
@@ -39,9 +42,13 @@ in
         position = "command";
         setCursor = true;
       };
+
       "pf-grafana" = "echo 'Open grafana at http://localhost:9091/' && kubectl port-forward service/grafana 9091:3000 -n octo-system --context";
       "pf-prom" = "echo 'Open prometheus at http://localhost:9093/' && kubectl port-forward service/prometheus-k8s 9093:9090 -n octo-system --context";
       "pf-akhq" = "echo 'Open akhq at http://localhost:9092/' && kubectl port-forward service/akhq 9092:80 -n kafka --context";
+
+      "akhq-pass" = "kubectl get secret -n kafka akhq-admin-user-creds -o json | jq '.data.ociVaultContent' | tr -d '\"' | base64 -D | pbcopy";
+ 
     };
   };
 
