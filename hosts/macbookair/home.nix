@@ -6,8 +6,6 @@ let
   inherit (userOptions) username userHome gitName gitEmail gitDefaultBranch githubUser;
 in
 {
-  # Import the base module
-
   imports = [
     # Import the base module normally
     ../../modules/base.nix
