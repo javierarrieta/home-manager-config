@@ -79,6 +79,8 @@ in {
     pkgs.orbstack
     pkgs.vscode
 
+    pkgs.gemini-cli
+
     pkgs.python313Packages.wakeonlan
   ];
 
