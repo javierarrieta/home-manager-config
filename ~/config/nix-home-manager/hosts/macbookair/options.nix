@@ -1,8 +1,8 @@
 {
-  username = "oracle";
-  userHome = "/home/oracle";
-  gitName = "Oracle";
-  gitEmail = "oracle@example.com";
+  username = "javier";
+  userHome = "/home/${username}";
+  gitName = "Javier Arrieta";
+  gitEmail = "javier@techdelivery.es";
   gitDefaultBranch = "main";
-  githubUser = "oracle";
+  githubUser = "javierarrieta";
 }

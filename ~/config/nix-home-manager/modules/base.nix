@@ -26,6 +26,8 @@
     pkgs.rustup
     pkgs.python313
     pkgs.fzf
+    pkgs.fishPlugins.tide
+    pkgs.fishPlugins.fzf
     pkgs.zoxide
     pkgs.bash
     pkgs.zsh
@@ -33,13 +35,9 @@
     pkgs.lsd
     pkgs.difftastic
     pkgs.dyff
-    pkgs.nmap
     pkgs.age
     pkgs.sops
     pkgs.neofetch
-    pkgs.opam
-    pkgs.gemini-cli
-    pkgs.python313Packages.wakeonlan
   ];
 
   # Environment variables
@@ -53,12 +51,21 @@
     interactiveShellInit = ''
       set fish_greeting
       fish_vi_key_bindings
+      
+      # Activate virtual environment if it exists
+      test -e ~/.venv/default/bin/activate.fish || venv ~/.venv/default
+      source ~/.venv/default/bin/activate.fish
+      
       starship init fish | source
     '';
     plugins = [
       {
         name = "bass";
         src = pkgs.fishPlugins.bass;
+      }
+      {
+        name = "tide";
+        src = pkgs.fishPlugins.tide;
       }
     ];
     shellAbbrs = {
@@ -100,7 +107,7 @@
       "k" = "kubectl";
       "kx" = "kubectx";
       "venv" = "python3 -m venv";
-      "rebase-pr" = "git fetch && git merge origin/master && git push";
+      "rebase-pr" = "git fetch && git merge origin/${config.gitDefaultBranch} && git push";
     };
   };
 
@@ -244,12 +251,12 @@
       export SDKMAN_DIR="$HOME/.sdkman"
       [[ -s "$HOME/.sdkman/bin/sdkman-init.sh" ]] && source "$HOME/.sdkman/bin/sdkman-init.sh"
 
+      eval "$(zoxide init --cmd cd zsh)"
+
       if [[ $(ps -o command= -p "$PPID" | awk '{print $1}') != 'fish' ]]
       then
           exec fish -l
       fi
-
-      eval "$(zoxide init --cmd cd zsh)"
     '';
     shellAliases = {
       gl = "git log";

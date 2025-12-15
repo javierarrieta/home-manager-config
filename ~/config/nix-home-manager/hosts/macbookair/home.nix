@@ -19,14 +19,11 @@ in
   # macbookair-specific packages
   home.packages = [
     # Add macbookair-specific packages here
-    pkgs.k9s
-    pkgs.kubectl
-    pkgs.kubectx
-    pkgs.docker
-    pkgs.docker-compose
+    pkgs.nmap
     pkgs.vscode
-    pkgs.postgresql
-    pkgs.gnome.gnome-system-monitor
+    pkgs.opam
+    pkgs.gemini-cli
+    pkgs.python313Packages.wakeonlan
   ];
 
   # macbookair-specific Fish configuration
@@ -41,11 +38,5 @@ in
       
       starship init fish | source
     '';
-  };
-
-  # macbookair-specific aliases
-  programs.fish.shellAliases = {
-    "k9s" = "k9s --namespace stream-app --context Stage/OC1/";
-    "kubectl" = "kubectl --namespace stream-app --context Stage/OC1/";
   };
 }
