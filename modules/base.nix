@@ -1,11 +1,6 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, lib, userOptions, ... }:
 
 {
-  # Home Manager needs a bit of information about you and the paths it should
-  # manage.
-  home.username = "${config.username}";
-  home.homeDirectory = "${config.userHome}";
-
   # This value determines the Home Manager release that your configuration is
   # compatible with.
   home.stateVersion = "25.05";
@@ -107,7 +102,7 @@
       "k" = "kubectl";
       "kx" = "kubectx";
       "venv" = "python3 -m venv";
-      "rebase-pr" = "git fetch && git merge origin/${config.gitDefaultBranch} && git push";
+      "rebase-pr" = "git fetch && git merge origin/${userOptions.gitDefaultBranch} && git push";
     };
   };
 
@@ -202,8 +197,8 @@
     enable = true;
     settings = {
       user = {
-        email = "${config.gitEmail}";
-        name = "${config.gitName}";
+        email = "${userOptions.gitEmail}";
+        name = "${userOptions.gitName}";
       };
       alias = {
         ss  = "status --short";
@@ -217,13 +212,9 @@
       };
       pull.rebase = "false";
       credential.helper = "osxkeychain";
-      init.defaultBranch = "${config.gitDefaultBranch}";
-      github.user = "${config.githubUser}";
+      init.defaultBranch = "${userOptions.gitDefaultBranch}";
+      github.user = "${userOptions.githubUser}";
     };
-  };
-
-  programs.difftastic = {
-    enable = true;
   };
 
   programs.pyenv = {
@@ -283,8 +274,6 @@
       kx = "kubectx";
     };
   };
-
-  nixpkgs.config.allowUnfree = true;
 
   programs.home-manager.enable = true;
 }

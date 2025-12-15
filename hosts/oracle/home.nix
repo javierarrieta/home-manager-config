@@ -2,8 +2,8 @@
 
 let
   # Import host-specific options
-  options = import ./options.nix;
-  inherit (options) username userHome gitName gitEmail gitDefaultBranch githubUser;
+  userOptions = import ./userOptions.nix;
+  inherit (userOptions) username userHome gitName gitEmail gitDefaultBranch githubUser;
 
   # Base module
   baseModule = import ../../modules/base.nix;

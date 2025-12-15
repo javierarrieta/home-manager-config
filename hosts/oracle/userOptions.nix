@@ -1,6 +1,6 @@
 {
   username = "jaarriet";
-  userHome = "/Users/${username}";
+  userHome = "/Users/jaarriet";
   gitName = "Javier Arrieta";
   gitEmail = "javier.arrieta@oracle.com";
   gitDefaultBranch = "master";
