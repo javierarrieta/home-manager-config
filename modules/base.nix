@@ -125,14 +125,14 @@
         truncation_symbol = "…/";
         fish_style_pwd_dir_length = 1;
         style = "main_color";
-        format = "[\u2b00](bg:$style fg:black)[$path[$read_only]($read_only_style)](bg:$style)[\u2b00](fg:$style) ";
+        format = "[$path]($style)[$lock_symbol]($lock_style)";
       };
       sudo = {
         disabled = false;
         symbol = "🪄  ";
       };
       kubernetes = {
-        format = "on [\u2603 ($namespace in )$context \($namespace\)](dimmed green) ";
+        format = "on [⛵ ($namespace in )$context \($namespace\)](dimmed green) ";
         disabled = false;
       };
       battery = {
