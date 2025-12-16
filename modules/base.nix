@@ -125,7 +125,7 @@
         truncation_symbol = "…/";
         fish_style_pwd_dir_length = 1;
         style = "main_color";
-        format = "[$path]($style)[$lock_symbol]($lock_style)";
+        format = "[$path]($style)[$lock_symbol]($lock_style) ";
       };
       sudo = {
         disabled = false;
