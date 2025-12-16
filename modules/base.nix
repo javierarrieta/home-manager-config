@@ -33,6 +33,7 @@
     pkgs.age
     pkgs.sops
     pkgs.neofetch
+    pkgs.llama-cpp
   ];
 
   # Environment variables
