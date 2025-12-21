@@ -27,6 +27,8 @@ in
     pkgs.opam
     pkgs.gemini-cli
     pkgs.python313Packages.wakeonlan
+
+    pkgs.nixos-anywhere
   ];
 
   # macbookair-specific Fish configuration
