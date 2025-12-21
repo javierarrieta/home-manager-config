@@ -34,6 +34,7 @@
     pkgs.sops
     pkgs.neofetch
     pkgs.llama-cpp
+    pkgs.nixfmt
   ];
 
   # Environment variables
