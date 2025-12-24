@@ -35,6 +35,7 @@
     pkgs.neofetch
     pkgs.llama-cpp
     pkgs.nixfmt
+    pkgs.kubernetes-helm
   ];
 
   # Environment variables
