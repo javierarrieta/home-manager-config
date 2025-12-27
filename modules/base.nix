@@ -1,5 +1,10 @@
 { config, pkgs, unstable, lib, userOptions, ... }:
 
+let
+  # prefer the new name, fallback to the old one for older nixpkgs
+  hostSystem = pkgs.stdenv.hostPlatform.system or pkgs.system;
+  unstablepkgs = unstable.legacyPackages.${hostSystem};
+in
 {
   # This value determines the Home Manager release that your configuration is
   # compatible with.
@@ -35,10 +40,11 @@
     pkgs.neofetch
     pkgs.nixfmt
     pkgs.kubernetes-helm
-    pkgs.vscode 
+    pkgs.vscode
+    pkgs.nixd
 
-    # get latest from unstable
-    unstable.legacyPackages.${pkgs.system}.llama-cpp 
+    # get latest from unstable (use hostSystem for compatibility)
+    unstablepkgs.llama-cpp 
   ];
 
   # Environment variables
