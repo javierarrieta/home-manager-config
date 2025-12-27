@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, unstable, lib, ... }:
 
 let
   # Import host-specific options
@@ -23,7 +23,6 @@ in
   home.packages = [
     # Add macbookair-specific packages here
     pkgs.nmap
-    pkgs.vscode
     pkgs.opam
     pkgs.gemini-cli
     pkgs.python313Packages.wakeonlan

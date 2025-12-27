@@ -1,4 +1,4 @@
-{ config, pkgs, lib, userOptions, ... }:
+{ config, pkgs, unstable, lib, userOptions, ... }:
 
 {
   # This value determines the Home Manager release that your configuration is
@@ -33,9 +33,12 @@
     pkgs.age
     pkgs.sops
     pkgs.neofetch
-    pkgs.llama-cpp
     pkgs.nixfmt
     pkgs.kubernetes-helm
+    pkgs.vscode 
+
+    # get latest from unstable
+    unstable.legacyPackages.${pkgs.system}.llama-cpp 
   ];
 
   # Environment variables

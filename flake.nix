@@ -6,12 +6,15 @@
     home-manager = {
       url = "github:nix-community/home-manager/release-25.11";
     };
+    unstable = {
+      url = "github:NixOS/nixpkgs/nixos-unstable";
+    };
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, flake-utils, ... }:
+  outputs = { self, nixpkgs, home-manager, unstable, flake-utils, ... }:
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
@@ -42,6 +45,7 @@
             };
           };
           modules = [ ./hosts/oracle/home.nix ];
+          extraSpecialArgs = { inherit unstable; }; # Pass unstable channel
         };
         
         homeConfigurations."macbookair" = home-manager.lib.homeManagerConfiguration {
@@ -52,6 +56,7 @@
             };
           };
           modules = [ ./hosts/macbookair/home.nix ];
+          extraSpecialArgs = { inherit unstable; }; # Pass unstable channel
         };
       };
 }

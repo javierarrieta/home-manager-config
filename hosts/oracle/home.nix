@@ -1,4 +1,4 @@
-{ config, pkgs, lib, ... }:
+{ config, pkgs, unstable, lib, ... }:
 
 let
   # Import host-specific options
@@ -22,8 +22,6 @@ in
   # oracle-specific packages
   home.packages = [
     # Add oracle-specific packages here
-    pkgs.vscode
-    pkgs.llama-cpp
     pkgs.kubectl
     pkgs.kubectx
   ];
