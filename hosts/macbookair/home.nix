@@ -26,6 +26,7 @@ in
     pkgs.opam
     pkgs.gemini-cli
     pkgs.python313Packages.wakeonlan
+    pkgs.minio-client
 
     pkgs.nixos-anywhere
   ];
