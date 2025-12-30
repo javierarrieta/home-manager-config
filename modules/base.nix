@@ -42,6 +42,9 @@ in
     pkgs.kubernetes-helm
     pkgs.vscode
     pkgs.nixd
+    
+    pkgs.pipenv
+    pkgs.python313Packages.virtualenv
 
     # get latest from unstable (use hostSystem for compatibility)
     unstablepkgs.llama-cpp 
