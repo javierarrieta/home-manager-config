@@ -18,7 +18,12 @@ in
   # Override base options with host-specific values
   home.username = username;
   home.homeDirectory = userHome;
-
+  # macbookair-specific Fish configuration
+  programs.fish = {
+    shellAliases = {
+      "hm-apply" = "home-manager switch --flake ${userHome}/code/home-manager-config#macbookair";
+    };
+  };
   # macbookair-specific packages
   home.packages = [
     # Add macbookair-specific packages here

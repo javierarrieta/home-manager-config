@@ -47,7 +47,10 @@ in
     pkgs.python313Packages.virtualenv
 
     # get latest from unstable (use hostSystem for compatibility)
-    unstablepkgs.llama-cpp 
+    unstablepkgs.llama-cpp
+    # Only needed in macbook air, need to export unstablepkgs to host flakes
+    unstablepkgs.esphome
+    unstablepkgs.platformio
   ];
 
   # Environment variables
@@ -290,5 +293,33 @@ in
     };
   };
 
+  programs.vscode = {
+    enable = true;
+    profiles.default.extensions = with pkgs.vscode-extensions; [
+      dracula-theme.theme-dracula
+      rust-lang.rust-analyzer
+      tamasfe.even-better-toml
+      ms-python.python
+      ms-python.vscode-pylance
+      ms-python.pylint
+      ms-python.mypy-type-checker
+      ms-python.debugpy
+      coder.coder-remote
+      continue.continue
+      ms-vscode.makefile-tools
+      ms-vscode.remote-explorer
+      ms-vscode.hexeditor
+      ms-vscode-remote.vscode-remote-extensionpack
+      mechatroner.rainbow-csv
+      redhat.vscode-yaml
+      yzhang.markdown-all-in-one
+      github.copilot
+      github.copilot-chat
+      ms-kubernetes-tools.vscode-kubernetes-tools
+      jnoortheen.nix-ide
+      fill-labs.dependi
+      ms-vscode-remote.remote-ssh
+    ];
+  };
   programs.home-manager.enable = true;
 }

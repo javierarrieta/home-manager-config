@@ -28,7 +28,6 @@ in
 
   # oracle-specific Fish configuration
   programs.fish = {
-    # oracle-specific abbreviations
     shellAbbrs = {
       "k9st" = {
         expansion = "k9s --namespace stream-app --context Stage/OC1/%";
@@ -47,6 +46,9 @@ in
 
       "akhq-pass" = "kubectl get secret -n kafka akhq-admin-user-creds -o json | jq '.data.ociVaultContent' | tr -d '\"' | base64 -D | pbcopy";
  
+    };
+    shellAliases = {
+      "hm-apply" = "home-manager switch --flake ${userHome}/code/home-manager-config#oracle";
     };
   };
 
