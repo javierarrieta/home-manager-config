@@ -12,7 +12,7 @@ in
   ];
 
   # Use _module.args to pass the data globally to all imported modules
-  # 'options' will now be available as an argument named 'options' in base.nix
+  # 'userOptions' will now be available as an argument named 'userOptions' in base.nix
   _module.args.userOptions = userOptions;
 
   # Override base options with host-specific values

@@ -56,8 +56,13 @@ in
   ];
 
   # Environment variables
-  home.sessionVariables = {
-    EDITOR = "nvim";
+  home = {
+    sessionVariables = {
+      EDITOR = "nvim";
+    };
+    sessionPath = [
+      "${userOptions.userHome}/.cargo/bin"
+    ];
   };
 
   # Common programs configuration
