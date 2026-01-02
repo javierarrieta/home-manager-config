@@ -24,6 +24,7 @@ in
     # Add oracle-specific packages here
     pkgs.kubectl
     pkgs.kubectx
+    pkgs.kcl
   ];
 
   # oracle-specific Fish configuration
