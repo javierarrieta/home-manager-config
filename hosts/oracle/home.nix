@@ -49,6 +49,7 @@ in
     };
     shellAliases = {
       "hm-apply" = "home-manager switch --flake ${userHome}/code/home-manager-config#oracle";
+      "fashion-token" = "z ${userHome}/code/fashion_token && cargo run --release ; z -";
     };
   };
 

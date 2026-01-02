@@ -319,6 +319,7 @@ in
       jnoortheen.nix-ide
       fill-labs.dependi
       ms-vscode-remote.remote-ssh
+      scala-lang.scala
     ];
   };
   programs.home-manager.enable = true;
