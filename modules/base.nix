@@ -42,7 +42,8 @@ in
     pkgs.kubernetes-helm
     pkgs.vscode
     pkgs.nixd
-    
+    pkgs.scala-cli
+
     pkgs.pipenv
     pkgs.python313Packages.virtualenv
 
@@ -64,11 +65,11 @@ in
     interactiveShellInit = ''
       set fish_greeting
       fish_vi_key_bindings
-      
+
       # Activate virtual environment if it exists
       test -e ~/.venv/default/bin/activate.fish || venv ~/.venv/default
       source ~/.venv/default/bin/activate.fish
-      
+
       starship init fish | source
     '';
     plugins = [
@@ -125,17 +126,17 @@ in
   };
 
   programs.starship = {
-    enable = true; 
-    enableFishIntegration = true; 
-    settings = { 
-      add_newline = false; 
-      hostname.style = "bold green"; 
-      username.style_user = "bold blue"; 
-      format = lib.concatStrings [ "$all" "$line_break" "$package" "$line_break" "$character" ]; 
-      scan_timeout = 2000; 
-      character = { 
-        success_symbol = "➜"; 
-        error_symbol = "➜"; 
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      add_newline = false;
+      hostname.style = "bold green";
+      username.style_user = "bold blue";
+      format = lib.concatStrings [ "$all" "$line_break" "$package" "$line_break" "$character" ];
+      scan_timeout = 2000;
+      character = {
+        success_symbol = "➜";
+        error_symbol = "➜";
       };
       directory = {
         truncate_to_repo = false;
@@ -187,8 +188,8 @@ in
         ];
         detect_folders = [];
       };
-    }; 
-    enableTransience = true; 
+    };
+    enableTransience = true;
   };
 
   programs.fzf = {
