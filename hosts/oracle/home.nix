@@ -1,9 +1,22 @@
-{ config, pkgs, unstable, lib, ... }:
+{
+  config,
+  pkgs,
+  unstable,
+  lib,
+  ...
+}:
 
 let
   # Import host-specific options
   userOptions = import ./userOptions.nix;
-  inherit (userOptions) username userHome gitName gitEmail gitDefaultBranch githubUser;
+  inherit (userOptions)
+    username
+    userHome
+    gitName
+    gitEmail
+    gitDefaultBranch
+    githubUser
+    ;
 in
 {
   imports = [
@@ -41,12 +54,16 @@ in
         setCursor = true;
       };
 
-      "pf-grafana" = "echo 'Open grafana at http://localhost:9091/' && kubectl port-forward service/grafana 9091:3000 -n octo-system --context";
-      "pf-prom" = "echo 'Open prometheus at http://localhost:9093/' && kubectl port-forward service/prometheus-k8s 9093:9090 -n octo-system --context";
-      "pf-akhq" = "echo 'Open akhq at http://localhost:9092/' && kubectl port-forward service/akhq 9092:80 -n kafka --context";
+      "pf-grafana" =
+        "echo 'Open grafana at http://localhost:9091/' && kubectl port-forward service/grafana 9091:3000 -n octo-system --context";
+      "pf-prom" =
+        "echo 'Open prometheus at http://localhost:9093/' && kubectl port-forward service/prometheus-k8s 9093:9090 -n octo-system --context";
+      "pf-akhq" =
+        "echo 'Open akhq at http://localhost:9092/' && kubectl port-forward service/akhq 9092:80 -n kafka --context";
 
-      "akhq-pass" = "kubectl get secret -n kafka akhq-admin-user-creds -o json | jq '.data.ociVaultContent' | tr -d '\"' | base64 -D | pbcopy";
- 
+      "akhq-pass" =
+        "kubectl get secret -n kafka akhq-admin-user-creds -o json | jq '.data.ociVaultContent' | tr -d '\"' | base64 -D | pbcopy";
+
     };
     shellAliases = {
       "hm-apply" = "home-manager switch --flake ${userHome}/code/home-manager-config#oracle";

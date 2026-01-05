@@ -1,4 +1,11 @@
-{ config, pkgs, unstable, lib, userOptions, ... }:
+{
+  config,
+  pkgs,
+  unstable,
+  lib,
+  userOptions,
+  ...
+}:
 
 let
   # prefer the new name, fallback to the old one for older nixpkgs
@@ -43,8 +50,8 @@ in
     pkgs.vscode
     pkgs.nixd
     pkgs.scala-cli
-    pkgs.jetbrains.idea-community    
-    
+    pkgs.jetbrains.idea-community
+
     pkgs.pipenv
     pkgs.python313Packages.virtualenv
 
@@ -71,11 +78,11 @@ in
     interactiveShellInit = ''
       set fish_greeting
       fish_vi_key_bindings
-      
+
       # Activate virtual environment if it exists
       test -e ~/.venv/default/bin/activate.fish || venv ~/.venv/default
       source ~/.venv/default/bin/activate.fish
-      
+
       starship init fish | source
     '';
     plugins = [
@@ -132,17 +139,23 @@ in
   };
 
   programs.starship = {
-    enable = true; 
-    enableFishIntegration = true; 
-    settings = { 
-      add_newline = false; 
-      hostname.style = "bold green"; 
-      username.style_user = "bold blue"; 
-      format = lib.concatStrings [ "$all" "$line_break" "$package" "$line_break" "$character" ]; 
-      scan_timeout = 2000; 
-      character = { 
-        success_symbol = "➜"; 
-        error_symbol = "➜"; 
+    enable = true;
+    enableFishIntegration = true;
+    settings = {
+      add_newline = false;
+      hostname.style = "bold green";
+      username.style_user = "bold blue";
+      format = lib.concatStrings [
+        "$all"
+        "$line_break"
+        "$package"
+        "$line_break"
+        "$character"
+      ];
+      scan_timeout = 2000;
+      character = {
+        success_symbol = "➜";
+        error_symbol = "➜";
       };
       directory = {
         truncate_to_repo = false;
@@ -163,10 +176,12 @@ in
         full_symbol = "🔋";
         charging_symbol = "🔌";
         discharging_symbol = "⚡";
-        display = [{
-          threshold = 30;
-          style = "bold red";
-        }];
+        display = [
+          {
+            threshold = 30;
+            style = "bold red";
+          }
+        ];
         disabled = false;
       };
       python = {
@@ -182,7 +197,7 @@ in
         symbol = "🐍 ";
         version_format = "v$raw";
         disabled = false;
-        detect_extensions = ["py"];
+        detect_extensions = [ "py" ];
         detect_files = [
           "requirements.txt"
           ".python-version"
@@ -192,10 +207,10 @@ in
           "setup.py"
           "__init__.py"
         ];
-        detect_folders = [];
+        detect_folders = [ ];
       };
-    }; 
-    enableTransience = true; 
+    };
+    enableTransience = true;
   };
 
   programs.fzf = {
@@ -226,14 +241,14 @@ in
         name = "${userOptions.gitName}";
       };
       alias = {
-        ss  = "status --short";
-        pf  = "pull --ff-only";
-        ci  = "commit";
-        co  = "checkout";
+        ss = "status --short";
+        pf = "pull --ff-only";
+        ci = "commit";
+        co = "checkout";
         lg1 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold green)(%ar)%C(reset) %C(white)%s%C(reset) %C(dim white)- %an%C(reset)%C(auto)%d%C(reset)' --all";
         lg2 = "log --graph --abbrev-commit --decorate --format=format:'%C(bold blue)%h%C(reset) - %C(bold cyan)%aD%C(reset) %C(bold green)(%ar)%C(reset)%C(auto)%d%C(reset)%n''          %C(white)%s%C(reset) %C(dim white)- %an%C(reset)'";
-        lg  = "lg1";
-        sw  = "switch";
+        lg = "lg1";
+        sw = "switch";
       };
       pull.rebase = "false";
       credential.helper = "osxkeychain";
@@ -295,7 +310,7 @@ in
       python = "python3";
       pip = "pip3";
       pym = "python3 -m";
-      k  = "kubectl";
+      k = "kubectl";
       kx = "kubectx";
     };
   };

@@ -1,9 +1,22 @@
-{ config, pkgs, unstable, lib, ... }:
+{
+  config,
+  pkgs,
+  unstable,
+  lib,
+  ...
+}:
 
 let
   # Import host-specific options
   userOptions = import ./userOptions.nix;
-  inherit (userOptions) username userHome gitName gitEmail gitDefaultBranch githubUser;
+  inherit (userOptions)
+    username
+    userHome
+    gitName
+    gitEmail
+    gitDefaultBranch
+    githubUser
+    ;
 in
 {
   imports = [
