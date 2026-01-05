@@ -327,6 +327,7 @@ in
       fill-labs.dependi
       ms-vscode-remote.remote-ssh
       scala-lang.scala
+      scalameta.metals
     ];
   };
   programs.home-manager.enable = true;
