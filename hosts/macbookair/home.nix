@@ -45,6 +45,7 @@ in
     pkgs.gemini-cli
     pkgs.python313Packages.wakeonlan
     pkgs.minio-client
+    pkgs.nmap
 
     pkgs.nixos-anywhere
   ];

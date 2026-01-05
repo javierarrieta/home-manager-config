@@ -55,6 +55,12 @@ in
     pkgs.pipenv
     pkgs.python313Packages.virtualenv
 
+    pkgs.gimp2-with-plugins
+
+
+    pkgs.kubectl
+    pkgs.kubectx
+    pkgs.k9s
     # get latest from unstable (use hostSystem for compatibility)
     unstablepkgs.llama-cpp
     # Only needed in macbook air, need to export unstablepkgs to host flakes

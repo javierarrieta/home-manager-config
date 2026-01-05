@@ -35,8 +35,6 @@ in
   # oracle-specific packages
   home.packages = [
     # Add oracle-specific packages here
-    pkgs.kubectl
-    pkgs.kubectx
     pkgs.kcl
   ];
 
