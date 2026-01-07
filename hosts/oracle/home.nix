@@ -58,7 +58,8 @@ in
         "echo 'Open prometheus at http://localhost:9093/' && kubectl port-forward service/prometheus-k8s 9093:9090 -n octo-system --context";
       "pf-akhq" =
         "echo 'Open akhq at http://localhost:9092/' && kubectl port-forward service/akhq 9092:80 -n kafka --context";
-
+      "pf-cruisecontrol" =
+        "echo 'Open Cruise Control at https://localhost:9090/' && kubectl port-forward service/scs-data-mesh-prod-cruise-control 9090:9090 -n kafka --context";
       "akhq-pass" =
         "kubectl get secret -n kafka akhq-admin-user-creds -o json | jq '.data.ociVaultContent' | tr -d '\"' | base64 -D | pbcopy";
 
