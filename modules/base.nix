@@ -54,7 +54,8 @@ in
 
     pkgs.pipenv
     pkgs.python313Packages.virtualenv
-
+    pkgs.python313Packages.uv
+    
     pkgs.gimp2-with-plugins
 
 
