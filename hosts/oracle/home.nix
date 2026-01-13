@@ -80,6 +80,7 @@ in
   programs.vscode = {
     profiles.default.extensions = with pkgs.vscode-extensions; [
       saoudrizwan.claude-dev
+      hashicorp.terraform
     ];
   };
 
