@@ -35,6 +35,8 @@ in
   programs.fish = {
     shellAliases = {
       "hm-apply" = "home-manager switch --flake ${userHome}/code/home-manager-config#macbookair";
+
+      "sshk" = "ssh-add -D && ssh-add -t 18h";
     };
   };
   # macbookair-specific packages
