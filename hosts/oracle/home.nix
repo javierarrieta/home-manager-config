@@ -75,6 +75,8 @@ in
         "llama-server --model ${userHome}/llm/models/unsloth_Ministral-3-3B-Instruct-2512-GGUF_Ministral-3-3B-Instruct-2512-UD-Q4_K_XL.gguf --jinja -ngl 99 --threads -1 --ctx-size 32684 --temp 0.15 --port 8081 --offline --metrics";
       "mirothinker" =
         "llama-server --model ${userHome}/llm/models/MiroThinker-v1.5-30B.Q4_K_M.gguf --jinja -ngl 99 --threads -1 --ctx-size 32684 --temp 0.15 --offline --metrics";
+      "qwencoder-3b" =
+        "llama-server --model ${userHome}/llm/models/Qwen2.5-Coder-3B-Q4_K_M.gguf --jinja -ngl 99 --threads -1 --ctx-size 16342 --temp 0.15 --port 8081 --offline --metrics";
     };
   };
 
