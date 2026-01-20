@@ -20,7 +20,7 @@
         pkgs = import nixpkgs {
           inherit system;
           config = {
-            allowUnfree = true;
+            allowUnfree = false;
           };
         };
       in
@@ -41,12 +41,20 @@
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
             config = {
-              allowUnfree = true;
+              allowUnfree = false;
             };
           };
           modules = [ ./hosts/oracle/home.nix ];
           extraSpecialArgs = { 
             unstablePkgs = import unstable {
+              system = "aarch64-darwin";
+              config.allowUnfree = false;
+            };
+            pkgsUnfree = import nixpkgs {
+              system = "aarch64-darwin";
+              config.allowUnfree = true;
+            };
+            unstablePkgsUnfree = import unstable {
               system = "aarch64-darwin";
               config.allowUnfree = true;
             };
@@ -56,13 +64,19 @@
         homeConfigurations."macbookair" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
-            config = {
-              allowUnfree = true;
-            };
+            config.allowUnfree = false;
           };
           modules = [ ./hosts/macbookair/home.nix ];
           extraSpecialArgs = { 
             unstablePkgs = import unstable {
+              system = "aarch64-darwin";
+              config.allowUnfree = false;
+            };
+            pkgsUnfree = import nixpkgs {
+              system = "aarch64-darwin";
+              config.allowUnfree = true;
+            };
+            unstablePkgsUnfree = import unstable {
               system = "aarch64-darwin";
               config.allowUnfree = true;
             };

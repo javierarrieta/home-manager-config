@@ -2,6 +2,8 @@
   config,
   pkgs,
   unstablePkgs,
+  pkgsUnfree,
+  unstablePkgsUnfree,
   lib,
   userOptions,
   ...
@@ -41,20 +43,19 @@
     pkgs.neofetch
     pkgs.nixfmt
     pkgs.kubernetes-helm
-    pkgs.vscode
     pkgs.zed-editor
     pkgs.nixd
     pkgs.scala-cli
-    pkgs.jetbrains.idea-community
+
+    unstablePkgsUnfree.jetbrains.idea-community
+    unstablePkgsUnfree.vscode
+    pkgsUnfree.gimp2-with-plugins
 
     pkgs.pipenv
     pkgs.python313Packages.virtualenv
     pkgs.python313Packages.uv
     pkgs.python313Packages.pylint
     pkgs.python313Packages.oci
-    
-    pkgs.gimp2-with-plugins
-
 
     pkgs.kubectl
     pkgs.kubectx
@@ -320,7 +321,8 @@
 
   programs.vscode = {
     enable = true;
-    profiles.default.extensions = with pkgs.vscode-extensions; [
+    package = unstablePkgsUnfree.vscode;
+    profiles.default.extensions = with unstablePkgsUnfree.vscode-extensions; [
       dracula-theme.theme-dracula
       rust-lang.rust-analyzer
       tamasfe.even-better-toml

@@ -2,6 +2,8 @@
   config,
   pkgs,
   unstablePkgs,
+  pkgsUnfree,
+  unstablePkgsUnfree,
   lib,
   ...
 }:
