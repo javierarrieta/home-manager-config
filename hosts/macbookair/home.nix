@@ -17,6 +17,9 @@ let
     gitDefaultBranch
     githubUser
     ;
+  # prefer the new name, fallback to the old one for older nixpkgs
+  hostSystem = pkgs.stdenv.hostPlatform.system or pkgs.system;
+  unstablepkgs = unstable.legacyPackages.${hostSystem};
 in
 {
   imports = [
@@ -48,7 +51,7 @@ in
     pkgs.python313Packages.wakeonlan
     pkgs.minio-client
     pkgs.nmap
-    pkgs.opencode
+    unstablepkgs.opencode
 
     pkgs.nixos-anywhere
   ];

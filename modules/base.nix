@@ -67,7 +67,6 @@ in
     pkgs.k9s
     # get latest from unstable (use hostSystem for compatibility)
     unstablepkgs.llama-cpp
-    unstablepkgs.opencode
     # Only needed in macbook air, need to export unstablepkgs to host flakes
     unstablepkgs.esphome
     unstablepkgs.platformio
