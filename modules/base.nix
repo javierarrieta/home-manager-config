@@ -47,7 +47,7 @@
     pkgs.nixd
     pkgs.scala-cli
 
-    unstablePkgsUnfree.jetbrains.idea-community
+    unstablePkgsUnfree.jetbrains.idea
     unstablePkgsUnfree.vscode
     pkgsUnfree.gimp2-with-plugins
 
