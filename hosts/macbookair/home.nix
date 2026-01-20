@@ -48,6 +48,7 @@ in
     pkgs.python313Packages.wakeonlan
     pkgs.minio-client
     pkgs.nmap
+    pkgs.opencode
 
     pkgs.nixos-anywhere
   ];

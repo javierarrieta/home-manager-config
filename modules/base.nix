@@ -48,6 +48,7 @@ in
     pkgs.nixfmt
     pkgs.kubernetes-helm
     pkgs.vscode
+    pkgs.zed-editor
     pkgs.nixd
     pkgs.scala-cli
     pkgs.jetbrains.idea-community
