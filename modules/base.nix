@@ -1,17 +1,11 @@
 {
   config,
   pkgs,
-  unstable,
+  unstablePkgs,
   lib,
   userOptions,
   ...
 }:
-
-let
-  # prefer the new name, fallback to the old one for older nixpkgs
-  hostSystem = pkgs.stdenv.hostPlatform.system or pkgs.system;
-  unstablepkgs = unstable.legacyPackages.${hostSystem};
-in
 {
   # This value determines the Home Manager release that your configuration is
   # compatible with.
@@ -65,11 +59,10 @@ in
     pkgs.kubectl
     pkgs.kubectx
     pkgs.k9s
-    # get latest from unstable (use hostSystem for compatibility)
-    unstablepkgs.llama-cpp
-    # Only needed in macbook air, need to export unstablepkgs to host flakes
-    unstablepkgs.esphome
-    unstablepkgs.platformio
+    # get latest from unstable
+    unstablePkgs.llama-cpp
+    unstablePkgs.esphome
+    unstablePkgs.platformio
   ];
 
   # Environment variables

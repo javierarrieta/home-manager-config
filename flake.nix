@@ -45,7 +45,12 @@
             };
           };
           modules = [ ./hosts/oracle/home.nix ];
-          extraSpecialArgs = { inherit unstable; }; # Pass unstable channel
+          extraSpecialArgs = { 
+            unstablePkgs = import unstable {
+              system = "aarch64-darwin";
+              config.allowUnfree = true;
+            };
+          };
         };
         
         homeConfigurations."macbookair" = home-manager.lib.homeManagerConfiguration {
@@ -56,7 +61,12 @@
             };
           };
           modules = [ ./hosts/macbookair/home.nix ];
-          extraSpecialArgs = { inherit unstable; }; # Pass unstable channel
+          extraSpecialArgs = { 
+            unstablePkgs = import unstable {
+              system = "aarch64-darwin";
+              config.allowUnfree = true;
+            };
+          };
         };
       };
 }
