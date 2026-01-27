@@ -349,7 +349,7 @@
       ms-vscode-remote.remote-ssh
       scala-lang.scala
       scalameta.metals
-      vscode-extensions.signageos.signageos-vscode-sops
+      signageos.signageos-vscode-sops
     ];
   };
   programs.home-manager.enable = true;
