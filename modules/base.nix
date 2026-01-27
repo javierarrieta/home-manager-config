@@ -46,6 +46,7 @@
     pkgs.zed-editor
     pkgs.nixd
     pkgs.scala-cli
+    pkgs.pstree
 
     unstablePkgsUnfree.jetbrains.idea
     unstablePkgsUnfree.vscode
