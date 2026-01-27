@@ -15,6 +15,22 @@
   };
 
   outputs = { self, nixpkgs, home-manager, unstable, flake-utils, ... }:
+    let
+      mkExtraArgs = system: {
+        unstablePkgs = import unstable {
+          inherit system;
+          config.allowUnfree = false;
+        };
+        pkgsUnfree = import nixpkgs {
+          inherit system;
+          config.allowUnfree = true;
+        };
+        unstablePkgsUnfree = import unstable {
+          inherit system;
+          config.allowUnfree = true;
+        };
+      };
+    in
     flake-utils.lib.eachDefaultSystem (system:
       let
         pkgs = import nixpkgs {
@@ -45,42 +61,18 @@
             };
           };
           modules = [ ./hosts/oracle/home.nix ];
-          extraSpecialArgs = { 
-            unstablePkgs = import unstable {
-              system = "aarch64-darwin";
-              config.allowUnfree = false;
-            };
-            pkgsUnfree = import nixpkgs {
-              system = "aarch64-darwin";
-              config.allowUnfree = true;
-            };
-            unstablePkgsUnfree = import unstable {
-              system = "aarch64-darwin";
-              config.allowUnfree = true;
-            };
-          };
+          extraSpecialArgs = mkExtraArgs "aarch64-darwin";
         };
         
         homeConfigurations."macbookair" = home-manager.lib.homeManagerConfiguration {
           pkgs = import nixpkgs {
             system = "aarch64-darwin";
-            config.allowUnfree = false;
+            config = {
+              allowUnfree = false;
+            };
           };
           modules = [ ./hosts/macbookair/home.nix ];
-          extraSpecialArgs = { 
-            unstablePkgs = import unstable {
-              system = "aarch64-darwin";
-              config.allowUnfree = false;
-            };
-            pkgsUnfree = import nixpkgs {
-              system = "aarch64-darwin";
-              config.allowUnfree = true;
-            };
-            unstablePkgsUnfree = import unstable {
-              system = "aarch64-darwin";
-              config.allowUnfree = true;
-            };
-          };
+          extraSpecialArgs = mkExtraArgs "aarch64-darwin";
         };
       };
 }
