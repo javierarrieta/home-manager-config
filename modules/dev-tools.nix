@@ -1,0 +1,41 @@
+{
+  config,
+  pkgs,
+  unstablePkgs,
+  pkgsUnfree,
+  unstablePkgsUnfree,
+  ...
+}:
+{
+  home.packages = with pkgs; [
+    htop
+    git
+    curl
+    wget
+    tmux
+    neovim
+    btop
+    ripgrep
+    yq
+    jq
+    rustup
+    fzf
+    bash
+    zsh
+    bat
+    lsd
+    difftastic
+    dyff
+    age
+    sops
+    neofetch
+    nixfmt
+    kubernetes-helm
+    scala-cli
+    pstree
+    pkgsUnfree.gimp2-with-plugins
+
+    unstablePkgs.esphome
+    unstablePkgs.platformio
+  ];
+}

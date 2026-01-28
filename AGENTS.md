@@ -13,3 +13,11 @@
 - Pass data to modules via `_module.args.userOptions = userOptions`
 - Imports: `imports = [ ../../modules/base.nix ]`
 - No comments unless asked
+
+## Module Structure
+- `base.nix` - Main entry point that imports all modules
+- `dev-tools.nix` - Common development tools (git, tmux, ripgrep, etc.)
+- `shell.nix` - Shell configuration (fish, zsh, starship, fzf, git)
+- `python.nix` - Python packages and pyenv
+- `k8s.nix` - Kubernetes tools (kubectl, k9s, kubectx, llama-cpp)
+- `editors.nix` - Editor configuration (vscode, neovim)
