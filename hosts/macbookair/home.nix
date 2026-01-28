@@ -43,15 +43,12 @@ in
   };
   # macbookair-specific packages
   home.packages = [
-    # Add macbookair-specific packages here
     pkgs.nmap
     pkgs.opam
     pkgs.gemini-cli
     pkgs.python313Packages.wakeonlan
     pkgs.minio-client
-    pkgs.nmap
     unstablePkgs.opencode
-
     pkgs.nixos-anywhere
   ];
 }
