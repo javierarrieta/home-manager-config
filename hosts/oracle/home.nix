@@ -46,20 +46,20 @@
 
     };
     shellAliases = {
-      "hm-apply" = "home-manager switch --flake ${userHome}/code/home-manager-config#oracle";
-      "fashion-token" = "z ${userHome}/code/fashion_token && cargo run --release ; z -";
+      "hm-apply" = "home-manager switch --flake ${userOptions.homeManagerConfigDir}#oracle";
+      "fashion-token" = "z ${userOptions.workspaces.fashion_token} && cargo run --release ; z -";
       "sshk" = "ssh-add -D && ssh-add -s /usr/local/lib/libykcs11.dylib -t 18h && ssh-add -t 18h";
       "code4cline" = "SHELL=$HOME/.nix-profile/bin/bash code";
       "ministral-reasoning" =
-        "llama-server --model ${userHome}/llm/models/unsloth_Ministral-3-14B-Reasoning-2512-GGUF_Ministral-3-14B-Reasoning-2512-Q4_K_M.gguf --jinja -ngl 99 --threads -1 --ctx-size 32684 --temp 0.6 --top-p 0.95   --offline";
+        "llama-server --model ${userOptions.llmModelsDir}/unsloth_Ministral-3-14B-Reasoning-2512-GGUF_Ministral-3-14B-Reasoning-2512-Q4_K_M.gguf --jinja -ngl 99 --threads -1 --ctx-size 32684 --temp 0.6 --top-p 0.95   --offline";
       "ministral-instruct" =
-        "llama-server --model ${userHome}/llm/models/unsloth_Ministral-3-3B-Instruct-2512-GGUF_Ministral-3-3B-Instruct-2512-UD-Q4_K_XL.gguf --jinja -ngl 99 --threads -1 --ctx-size 32684 --temp 0.15 --port 8081 --offline --metrics";
+        "llama-server --model ${userOptions.llmModelsDir}/unsloth_Ministral-3-3B-Instruct-2512-GGUF_Ministral-3-3B-Instruct-2512-UD-Q4_K_XL.gguf --jinja -ngl 99 --threads -1 --ctx-size 32684 --temp 0.15 --port 8081 --offline --metrics";
       "devstral" =
-        "llama-server --model ${userHome}/llm/models/unsloth_Devstral-Small-2-24B-Instruct-2512-GGUF-Q4_K_XL.gguf --jinja -ngl 99 --threads -1 --ctx-size 32684 --temp 0.15 --port 8080 --offline --metrics";
+        "llama-server --model ${userOptions.llmModelsDir}/unsloth_Devstral-Small-2-24B-Instruct-2512-GGUF-Q4_K_XL.gguf --jinja -ngl 99 --threads -1 --ctx-size 32684 --temp 0.15 --port 8080 --offline --metrics";
       "mirothinker" =
-        "llama-server --model ${userHome}/llm/models/MiroThinker-v1.5-30B.Q4_K_M.gguf --jinja -ngl 99 --threads -1 --ctx-size 32684 --temp 0.15 --offline --metrics";
+        "llama-server --model ${userOptions.llmModelsDir}/MiroThinker-v1.5-30B.Q4_K_M.gguf --jinja -ngl 99 --threads -1 --ctx-size 32684 --temp 0.15 --offline --metrics";
       "qwencoder-3b" =
-        "llama-server --model ${userHome}/llm/models/Qwen2.5-Coder-3B-Q4_K_M.gguf --jinja -ngl 99 --threads -1 --ctx-size 16342 --temp 0.15 --port 8081 --offline --metrics";
+        "llama-server --model ${userOptions.llmModelsDir}/Qwen2.5-Coder-3B-Q4_K_M.gguf --jinja -ngl 99 --threads -1 --ctx-size 16342 --temp 0.15 --port 8081 --offline --metrics";
     };
   };
 

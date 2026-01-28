@@ -6,4 +6,5 @@
   gitDefaultBranch = "main";
   githubUser = "javierarrieta";
   pythonVersion = "3.13";
+  homeManagerConfigDir = "/Users/javier/code/home-manager-config";
 }

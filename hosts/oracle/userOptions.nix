@@ -6,4 +6,9 @@
   gitDefaultBranch = "master";
   githubUser = "javierarrieta";
   pythonVersion = "3.13";
+  llmModelsDir = "/Users/jaarriet/llm/models";
+  workspaces = {
+    fashion_token = "/Users/jaarriet/code/fashion_token";
+  };
+  homeManagerConfigDir = "/Users/jaarriet/code/home-manager-config";
 }
