@@ -1,16 +1,23 @@
 {
   config,
   pkgs,
+  lib,
+  userOptions,
   ...
 }:
+let
+  pythonVersion = lib.replaceStrings [ "." ] [ "" ] userOptions.pythonVersion;
+  python = pkgs."python${pythonVersion}";
+  pythonPackages = pkgs."python${pythonVersion}Packages";
+in
 {
   home.packages = with pkgs; [
-    python313
+    python
     pipenv
-    python313Packages.virtualenv
-    python313Packages.uv
-    python313Packages.pylint
-    python313Packages.oci
+    pythonPackages.virtualenv
+    pythonPackages.uv
+    pythonPackages.pylint
+    pythonPackages.oci
   ];
 
   programs.pyenv = {

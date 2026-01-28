@@ -5,4 +5,5 @@
   gitEmail = "javier.arrieta@oracle.com";
   gitDefaultBranch = "master";
   githubUser = "javierarrieta";
+  pythonVersion = "3.13";
 }

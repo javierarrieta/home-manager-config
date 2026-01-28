@@ -5,4 +5,5 @@
   gitEmail = "javier@techdelivery.es";
   gitDefaultBranch = "main";
   githubUser = "javierarrieta";
+  pythonVersion = "3.13";
 }
