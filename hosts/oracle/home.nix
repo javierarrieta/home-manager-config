@@ -71,6 +71,7 @@ in
       "hm-apply" = "home-manager switch --flake ${userHome}/code/home-manager-config#oracle";
       "fashion-token" = "z ${userHome}/code/fashion_token && cargo run --release ; z -";
       "sshk" = "ssh-add -D && ssh-add -s /usr/local/lib/libykcs11.dylib -t 18h && ssh-add -t 18h";
+      "code4cline" = "SHELL=$HOME/.nix-profile/bin/bash code";
       "ministral-reasoning" =
         "llama-server --model ${userHome}/llm/models/unsloth_Ministral-3-14B-Reasoning-2512-GGUF_Ministral-3-14B-Reasoning-2512-Q4_K_M.gguf --jinja -ngl 99 --threads -1 --ctx-size 32684 --temp 0.6 --top-p 0.95   --offline";
       "ministral-instruct" =
