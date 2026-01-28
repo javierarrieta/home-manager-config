@@ -30,6 +30,17 @@
           config.allowUnfree = true;
         };
       };
+
+      mkHostConfig = hostname: {
+        pkgs = import nixpkgs {
+          system = "aarch64-darwin";
+          config = {
+            allowUnfree = false;
+          };
+        };
+        modules = [ ./hosts/${hostname}/home.nix ];
+        extraSpecialArgs = mkExtraArgs "aarch64-darwin";
+      };
     in
     flake-utils.lib.eachDefaultSystem (system:
       let
@@ -52,27 +63,9 @@
           ];
         };
       }) // {
-        # Define configurations for different hosts
-        homeConfigurations."oracle" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = "aarch64-darwin";
-            config = {
-              allowUnfree = false;
-            };
-          };
-          modules = [ ./hosts/oracle/home.nix ];
-          extraSpecialArgs = mkExtraArgs "aarch64-darwin";
-        };
-        
-        homeConfigurations."macbookair" = home-manager.lib.homeManagerConfiguration {
-          pkgs = import nixpkgs {
-            system = "aarch64-darwin";
-            config = {
-              allowUnfree = false;
-            };
-          };
-          modules = [ ./hosts/macbookair/home.nix ];
-          extraSpecialArgs = mkExtraArgs "aarch64-darwin";
+        homeConfigurations = {
+          oracle = home-manager.lib.homeManagerConfiguration (mkHostConfig "oracle");
+          macbookair = home-manager.lib.homeManagerConfiguration (mkHostConfig "macbookair");
         };
       };
 }
