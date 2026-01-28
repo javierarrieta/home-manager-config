@@ -31,15 +31,15 @@
         };
       };
 
-      mkHostConfig = hostname: {
+      mkHostConfig = { hostname, system ? "aarch64-darwin" }: {
         pkgs = import nixpkgs {
-          system = "aarch64-darwin";
+          inherit system;
           config = {
             allowUnfree = false;
           };
         };
         modules = [ ./hosts/${hostname}/home.nix ];
-        extraSpecialArgs = mkExtraArgs "aarch64-darwin";
+        extraSpecialArgs = mkExtraArgs system;
       };
     in
     flake-utils.lib.eachDefaultSystem (system:
@@ -64,8 +64,8 @@
         };
       }) // {
         homeConfigurations = {
-          oracle = home-manager.lib.homeManagerConfiguration (mkHostConfig "oracle");
-          macbookair = home-manager.lib.homeManagerConfiguration (mkHostConfig "macbookair");
+          oracle = home-manager.lib.homeManagerConfiguration (mkHostConfig { hostname = "oracle"; });
+          macbookair = home-manager.lib.homeManagerConfiguration (mkHostConfig { hostname = "macbookair"; });
         };
       };
 }
