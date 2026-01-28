@@ -5,39 +5,17 @@
   pkgsUnfree,
   unstablePkgsUnfree,
   lib,
+  userOptions,
   ...
 }:
-
-let
-  # Import host-specific options
-  userOptions = import ./userOptions.nix;
-  inherit (userOptions)
-    username
-    userHome
-    gitName
-    gitEmail
-    gitDefaultBranch
-    githubUser
-    ;
-in
 {
   imports = [
-    # Import the base module normally
     ../../modules/base.nix
   ];
 
-  # Use _module.args to pass the data globally to all imported modules
-  # 'options' will now be available as an argument named 'options' in base.nix
-  _module.args.userOptions = userOptions;
-
-  # Override base options with host-specific values
-  home.username = username;
-  home.homeDirectory = userHome;
-  # macbookair-specific Fish configuration
   programs.fish = {
     shellAliases = {
-      "hm-apply" = "home-manager switch --flake ${userHome}/code/home-manager-config#macbookair";
-
+      "hm-apply" = "home-manager switch --flake ${userOptions.userHome}/code/home-manager-config#macbookair";
       "sshk" = "ssh-add -D && ssh-add -t 18h";
     };
   };

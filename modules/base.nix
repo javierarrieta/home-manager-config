@@ -9,6 +9,7 @@
   home.stateVersion = "25.05";
 
   imports = [
+    ./host-common.nix
     ./dev-tools.nix
     ./shell.nix
     ./python.nix

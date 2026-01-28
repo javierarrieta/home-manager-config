@@ -39,7 +39,7 @@
           };
         };
         modules = [ ./hosts/${hostname}/home.nix ];
-        extraSpecialArgs = mkExtraArgs system;
+        extraSpecialArgs = (mkExtraArgs system) // { inherit hostname; };
       };
     in
     flake-utils.lib.eachDefaultSystem (system:

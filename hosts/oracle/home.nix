@@ -5,36 +5,14 @@
   pkgsUnfree,
   unstablePkgsUnfree,
   lib,
+  userOptions,
   ...
 }:
-
-let
-  # Import host-specific options
-  userOptions = import ./userOptions.nix;
-  inherit (userOptions)
-    username
-    userHome
-    gitName
-    gitEmail
-    gitDefaultBranch
-    githubUser
-    ;
-in
 {
   imports = [
-    # Import the base module normally
     ../../modules/base.nix
   ];
 
-  # Use _module.args to pass the data globally to all imported modules
-  # 'userOptions' will now be available as an argument named 'userOptions' in base.nix
-  _module.args.userOptions = userOptions;
-
-  # Override base options with host-specific values
-  home.username = username;
-  home.homeDirectory = userHome;
-
-  # oracle-specific packages
   home.packages = [
     # Add oracle-specific packages here
     pkgs.kcl
