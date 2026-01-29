@@ -33,6 +33,7 @@
     kubernetes-helm
     scala-cli
     pstree
+    nodejs_24
     pkgsUnfree.gimp2-with-plugins
 
     unstablePkgs.esphome

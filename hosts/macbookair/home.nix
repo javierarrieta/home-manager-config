@@ -29,6 +29,6 @@ in
     pkgs."python${pythonVersion}Packages".wakeonlan
     pkgs.minio-client
     unstablePkgs.opencode
-    pkgs.nodejs_24
+    pkgs.wp-cli
   ];
 }
