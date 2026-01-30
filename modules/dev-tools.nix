@@ -36,7 +36,7 @@
     nodejs_24
     pkgsUnfree.gimp2-with-plugins
 
-    haskell-ci
+    haskell.compiler.ghc98
     haskell-language-server
     haskellPackages.cabal-install
 
