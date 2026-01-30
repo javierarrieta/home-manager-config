@@ -36,6 +36,13 @@
     nodejs_24
     pkgsUnfree.gimp2-with-plugins
 
+    haskell-ci
+    haskell-language-server
+    haskellPackages.cabal-install
+
+    ocaml
+    dune_3
+
     unstablePkgs.esphome
     unstablePkgs.platformio
   ];
