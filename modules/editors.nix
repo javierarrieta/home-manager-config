@@ -42,6 +42,8 @@
       scala-lang.scala
       scalameta.metals
       signageos.signageos-vscode-sops
+      ocamllabs.ocaml-platform
+      haskell.haskell
     ];
   };
 }
