@@ -17,6 +17,7 @@
     # Add oracle-specific packages here
     pkgs.kcl
     pkgs.nodejs_24
+    pkgs.opentofu
   ];
 
   # oracle-specific Fish configuration
@@ -46,6 +47,7 @@
 
     };
     shellAliases = {
+      "terraform" = "tofu";
       "hm-apply" = "home-manager switch --flake ${userOptions.homeManagerConfigDir}#oracle";
       "fashion-token" = "z ${userOptions.workspaces.fashion_token} && cargo run --release ; z -";
       "sshk" = "ssh-add -D && ssh-add -s /usr/local/lib/libykcs11.dylib -t 18h && ssh-add -t 18h";
