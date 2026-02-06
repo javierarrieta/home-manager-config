@@ -67,7 +67,6 @@
 
   programs.vscode = {
     profiles.default.extensions = with unstablePkgsUnfree.vscode-extensions; [
-      saoudrizwan.claude-dev
       hashicorp.terraform
     ];
   };
