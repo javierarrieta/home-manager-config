@@ -9,6 +9,7 @@
 {
   home.packages = with pkgs; [
     htop
+    nvtopPackages.apple
     git
     curl
     wget
