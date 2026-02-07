@@ -18,6 +18,7 @@ in
     pythonPackages.uv
     pythonPackages.pylint
     pythonPackages.oci
+    pythonPackages.huggingface-hub
   ];
 
   programs.pyenv = {
