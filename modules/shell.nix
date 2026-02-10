@@ -259,4 +259,25 @@
       github.user = "${userOptions.githubUser}";
     };
   };
+
+
+  programs.tmux = {
+    enable = true;
+    # Enable focus events so tmux knows when you switch panes
+    focusEvents = true; 
+
+    extraConfig = ''
+      # 1. Highlight Pane Borders
+      set -g pane-border-style "fg=#3b4252"
+      set -g pane-active-border-style "fg=#81a1c1"
+
+      # 2. Dim Inactive Panes (Visual Differentiator)
+      set -g window-style "fg=#616e88,bg=#2e3440"
+      set -g window-active-style "fg=#d8dee9,bg=#2e3440"
+
+      # 3. Add Border Indicators (requires tmux 3.2+)
+      set -g pane-border-indicators both
+      set -g pane-border-lines heavy
+    '';
+  };
 }
