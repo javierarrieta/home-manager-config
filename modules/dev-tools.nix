@@ -47,4 +47,10 @@
     unstablePkgs.esphome
     unstablePkgs.platformio
   ];
+
+  programs.neovim = {
+    enable = true;
+    defaultEditor = true;
+    viAlias = true;
+  };
 }
