@@ -15,6 +15,7 @@
     ./python.nix
     ./k8s.nix
     ./editors.nix
+    ./term.nix
   ];
 
   home.packages = with pkgs; [ nixd ];
