@@ -14,7 +14,6 @@
     curl
     wget
     tmux
-    neovim
     btop
     ripgrep
     yq
