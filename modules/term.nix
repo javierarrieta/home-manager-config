@@ -19,7 +19,7 @@
       enableFishIntegration = true;
     };
     font = {
-      name = "FiraCode-Retina";
+      name = "JetBrainsMonoNerdFont";
       size = 10;
     };
     enableGitIntegration = true;
