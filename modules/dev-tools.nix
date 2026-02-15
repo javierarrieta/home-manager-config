@@ -45,6 +45,9 @@
 
     unstablePkgs.esphome
     unstablePkgs.platformio
+
+    unstablePkgs.bruno
+    unstablePkgs.bruno-cli
   ];
 
   programs.neovim = {
