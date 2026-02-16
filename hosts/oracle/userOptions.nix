@@ -5,7 +5,7 @@
   gitEmail = "javier.arrieta@oracle.com";
   gitDefaultBranch = "master";
   githubUser = "javierarrieta";
-  pythonVersion = "3.13";
+  pythonVersion = "3.12";
   llmModelsDir = "/Users/jaarriet/llm/models";
   workspaces = {
     fashion_token = "/Users/jaarriet/code/fashion_token";

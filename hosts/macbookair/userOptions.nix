@@ -5,6 +5,6 @@
   gitEmail = "javier@techdelivery.es";
   gitDefaultBranch = "main";
   githubUser = "javierarrieta";
-  pythonVersion = "3.13";
+  pythonVersion = "3.12";
   homeManagerConfigDir = "/Users/javier/code/home-manager-config";
 }
