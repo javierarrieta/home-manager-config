@@ -34,7 +34,6 @@
     scala-cli
     pstree
     nodejs_24
-    unstablePkgsUnfree.gimp-with-plugins
 
     haskell.compiler.ghc98
     haskell-language-server
