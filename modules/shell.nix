@@ -15,6 +15,7 @@
 
   home.sessionVariables = {
     EDITOR = "nvim";
+    CODE_DIR = "${userOptions.userHome}/code";
   };
 
   home.sessionPath = [
