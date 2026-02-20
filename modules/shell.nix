@@ -85,8 +85,8 @@
       "venv" = "python3 -m venv";
       "rebase-pr" = "git fetch && git merge origin/${userOptions.gitDefaultBranch} && git push";
       "autocomplete-server" =
-        "hf download Qwen/Qwen2.5-Coder-3B-Instruct-GGUF qwen2.5-coder-3b-instruct-q4_k_m.gguf --local-dir $HOME/llm/models && \
-         llama-server -m $HOME/llm/models/qwen2.5-coder-3b-instruct-q4_k_m.gguf --offline --jinja -ngl 99 --threads -1 --ctx-size 8192 --port 8081";
+        "hf download Qwen/Qwen2.5-Coder-1.5B-Instruct-GGUF qwen2.5-coder-1.5b-instruct-q4_k_m.gguf --local-dir $HOME/llm/models && \
+         llama-server -m $HOME/llm/models/qwen2.5-coder-1.5b-instruct-q4_k_m.gguf --offline --jinja -ngl 99 --threads -1 --ctx-size 8192 --port 8081";
     };
   };
 
