@@ -28,11 +28,11 @@
       set fish_greeting
       fish_vi_key_bindings
 
+      starship init fish | source
+
       # Activate virtual environment if it exists
       test -e ~/.venv/default/bin/activate.fish || venv ~/.venv/default
       source ~/.venv/default/bin/activate.fish
-
-      starship init fish | source
     '';
     plugins = [
       {
