@@ -15,6 +15,7 @@
     wget
     tmux
     btop
+    mactop
     ripgrep
     yq
     jq
