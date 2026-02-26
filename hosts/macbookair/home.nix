@@ -29,7 +29,9 @@ in
     pkgs.gemini-cli
     pkgs."python${pythonVersion}Packages".wakeonlan
     pkgs.minio-client
-    unstablePkgs.opencode
     pkgs.wp-cli
+
+    unstablePkgs.opencode
+    unstablePkgs.goose-cli
   ];
 }
