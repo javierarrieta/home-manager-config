@@ -14,7 +14,15 @@
     };
   };
 
-  outputs = { self, nixpkgs, home-manager, unstable, flake-utils, ... }:
+  outputs =
+    {
+      self,
+      nixpkgs,
+      home-manager,
+      unstable,
+      flake-utils,
+      ...
+    }:
     let
       mkExtraArgs = system: {
         unstablePkgs = import unstable {
@@ -31,18 +39,26 @@
         };
       };
 
-      mkHostConfig = { hostname, system ? "aarch64-darwin" }: {
-        pkgs = import nixpkgs {
-          inherit system;
-          config = {
-            allowUnfree = false;
+      mkHostConfig =
+        {
+          hostname,
+          system ? "aarch64-darwin",
+        }:
+        {
+          pkgs = import nixpkgs {
+            inherit system;
+            config = {
+              allowUnfree = false;
+            };
+          };
+          modules = [ ./hosts/${hostname}/home.nix ];
+          extraSpecialArgs = (mkExtraArgs system) // {
+            inherit hostname;
           };
         };
-        modules = [ ./hosts/${hostname}/home.nix ];
-        extraSpecialArgs = (mkExtraArgs system) // { inherit hostname; };
-      };
     in
-    flake-utils.lib.eachDefaultSystem (system:
+    flake-utils.lib.eachDefaultSystem (
+      system:
       let
         pkgs = import nixpkgs {
           inherit system;
@@ -62,10 +78,16 @@
             nixpkgs-fmt
           ];
         };
-      }) // {
-        homeConfigurations = {
-          oracle = home-manager.lib.homeManagerConfiguration (mkHostConfig { hostname = "oracle"; });
-          macbookair = home-manager.lib.homeManagerConfiguration (mkHostConfig { hostname = "macbookair"; });
-        };
+      }
+    )
+    // {
+      homeConfigurations = {
+        oracle = home-manager.lib.homeManagerConfiguration (mkHostConfig {
+          hostname = "oracle";
+        });
+        macbookair = home-manager.lib.homeManagerConfiguration (mkHostConfig {
+          hostname = "macbookair";
+        });
       };
+    };
 }

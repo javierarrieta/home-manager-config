@@ -1,4 +1,9 @@
-{ config, lib, hostname, ... }:
+{
+  config,
+  lib,
+  hostname,
+  ...
+}:
 let
   userOptions = import ../hosts/${hostname}/userOptions.nix;
 in

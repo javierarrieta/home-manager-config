@@ -261,11 +261,10 @@
     };
   };
 
-
   programs.tmux = {
     enable = true;
     # Enable focus events so tmux knows when you switch panes
-    focusEvents = true; 
+    focusEvents = true;
 
     extraConfig = ''
       # 1. Highlight Pane Borders
