@@ -44,6 +44,8 @@
     ocaml
     dune_3
 
+    unstablePkgs.codex
+
     unstablePkgs.esphome
     unstablePkgs.platformio
 
