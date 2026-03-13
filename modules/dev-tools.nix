@@ -44,6 +44,8 @@
     ocaml
     dune_3
 
+    mesa
+
     unstablePkgs.codex
 
     unstablePkgs.esphome
