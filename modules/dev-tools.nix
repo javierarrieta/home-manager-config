@@ -9,13 +9,11 @@
 {
   home.packages = with pkgs; [
     htop
-    nvtopPackages.apple
     git
     curl
     wget
     tmux
     btop
-    mactop
     ripgrep
     yq
     jq
@@ -33,26 +31,10 @@
     nixfmt
     nixfmt-tree
     kubernetes-helm
-    scala-cli
     pstree
     nodejs_24
 
-    haskell.compiler.ghc98
-    haskell-language-server
-    haskellPackages.cabal-install
-
-    ocaml
-    dune_3
-
     hugo
-
-    unstablePkgs.codex
-
-    unstablePkgs.esphome
-    unstablePkgs.platformio
-
-    unstablePkgs.bruno
-    unstablePkgs.bruno-cli
   ];
 
   programs.neovim = {

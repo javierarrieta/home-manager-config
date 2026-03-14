@@ -12,6 +12,7 @@
 {
   imports = [
     ../../modules/base.nix
+    ../../modules/macbook/dev-tools.nix
   ];
 
   home.packages = [
