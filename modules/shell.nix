@@ -12,6 +12,8 @@
     zoxide
     fishPlugins.tide
     fishPlugins.fzf
+
+    ncdu
   ];
 
   home.sessionVariables = {
