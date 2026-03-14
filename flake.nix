@@ -88,6 +88,10 @@
         macbookair = home-manager.lib.homeManagerConfiguration (mkHostConfig {
           hostname = "macbookair";
         });
+        vps = home-manager.lib.homeManagerConfiguration (mkHostConfig {
+          hostname = "vps";
+          system = "x86_64-linux";
+        });
       };
     };
 }
