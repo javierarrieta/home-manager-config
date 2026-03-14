@@ -6,6 +6,7 @@
   unstablePkgsUnfree,
   lib,
   userOptions,
+  hostname,
   ...
 }:
 {
@@ -48,7 +49,6 @@
     };
     shellAliases = {
       "terraform" = "tofu";
-      "hm-apply" = "home-manager switch --flake ${userOptions.homeManagerConfigDir}#oracle";
       "fashion-token" = "z ${userOptions.workspaces.fashion_token} && cargo run --release ; z -";
       "sshk" = "ssh-add -D && ssh-add -s /usr/local/lib/libykcs11.dylib -t 18h && ssh-add -t 18h";
       "code4cline" = "SHELL=$HOME/.nix-profile/bin/bash code";

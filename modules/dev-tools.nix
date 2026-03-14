@@ -44,7 +44,7 @@
     ocaml
     dune_3
 
-    mesa
+    hugo
 
     unstablePkgs.codex
 

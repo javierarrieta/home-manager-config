@@ -6,6 +6,7 @@
   unstablePkgsUnfree,
   lib,
   userOptions,
+  hostname,
   ...
 }:
 let
@@ -18,7 +19,6 @@ in
 
   programs.fish = {
     shellAliases = {
-      "hm-apply" = "home-manager switch --flake ${userOptions.homeManagerConfigDir}#macbookair";
       "sshk" = "ssh-add -D && ssh-add -t 18h";
     };
 
