@@ -36,6 +36,22 @@
       # Activate virtual environment if it exists
       test -e ~/.venv/default/bin/activate.fish || venv ~/.venv/default
       source ~/.venv/default/bin/activate.fish
+
+      function b64-encode
+        if test (count $argv) -eq 0
+          base64
+        else
+          base64 "$argv"
+        end
+      end
+
+      function b64-decode
+        if test (count $argv) -eq 0
+          base64 -d
+        else
+          base64 -d "$argv"
+        end
+      end
     '';
     plugins = [
       {
