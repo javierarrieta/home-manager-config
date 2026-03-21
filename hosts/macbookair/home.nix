@@ -17,6 +17,10 @@ in
     ../../modules/base.nix
   ];
 
+  home.sessionVariables = {
+    SOPS_AGE_KEY_FILE = "${userOptions.userHome}/.config/sops/age/keys.txt";
+  };
+
   programs.fish = {
     shellAliases = {
       "sshk" = "ssh-add -D && ssh-add -t 18h";
