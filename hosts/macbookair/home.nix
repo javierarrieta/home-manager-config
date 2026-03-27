@@ -37,6 +37,5 @@ in
     pkgs.bun
 
     unstablePkgs.opencode
-    unstablePkgs.goose-cli
   ];
 }
