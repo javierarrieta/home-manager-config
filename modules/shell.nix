@@ -109,6 +109,7 @@
       "hm-update" = "nix flake update --flake $CODE_DIR/home-manager-config";
       "hm-apply" = "home-manager switch --flake ${userOptions.homeManagerConfigDir}#${hostname}";
       "hm-gc" = "nix-store -gc";
+      "sshe" = "ssh -o \"UserKnownHostsFile=/dev/null\"";
     };
   };
 
