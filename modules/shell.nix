@@ -104,8 +104,8 @@
       "venv" = "python3 -m venv";
       "rebase-pr" = "git fetch && git merge origin/${userOptions.gitDefaultBranch} && git push";
       "autocomplete-server" =
-        "hf download unsloth/Qwen3.5-4B-GGUF Qwen3.5-4B-Q4_K_M.gguf --local-dir $HOME/llm/models && \
-         llama-server -m $HOME/llm/models/Qwen3.5-4B-Q4_K_M.gguf --offline -ngl 99 --threads -1 --ctx-size 8192 --port 8081";
+        "hf download unsloth/Qwen3.5-2B-GGUF Qwen3.5-2B-UD-Q4_K_XL.gguf --local-dir $HOME/llm/models && \
+         llama-server -m $HOME/llm/models/Qwen3.5-2B-UD-Q4_K_XL.gguf --offline -ngl 99 --threads -1 --ctx-size 8192 --port 8081";
       "hm-update" = "nix flake update --flake $CODE_DIR/home-manager-config";
       "hm-apply" = "home-manager switch --flake ${userOptions.homeManagerConfigDir}#${hostname}";
       "hm-gc" = "nix-store -gc";
