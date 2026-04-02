@@ -105,9 +105,7 @@
       "rebase-pr" = "git fetch && git merge origin/${userOptions.gitDefaultBranch} && git push";
       "autocomplete-server" =
         "hf download unsloth/Qwen3.5-2B-GGUF Qwen3.5-2B-Q4_K_M.gguf --local-dir $HOME/llm/models && \
-         llama-server -m $HOME/llm/models/Qwen3.5-2B-Q4_K_M.gguf --temp 0.6 --top-p 0.95 --top-k 20 \
-         --min-p 0.1 --presence_penalty 0.0 --repeat-penalty 1.0 --chat-template-kwargs {\"enable_thinking\": false}' \
-         --reasoning-budget -1 --offline -ngl 99 --threads -1 --ctx-size 8192 --port 8081";
+         llama-server -m $HOME/llm/models/Qwen3.5-2B-Q4_K_M.gguf --temp 0.6 --top-p 0.95 --top-k 20 --min-p 0.1 --presence_penalty 0.0 --repeat-penalty 1.0 --chat-template-kwargs '{\"enable_thinking\": false}' --reasoning-budget -1 --offline -ngl 99 --threads -1 --ctx-size 8192 --port 8081";
       "hm-update" = "nix flake update --flake $CODE_DIR/home-manager-config";
       "hm-apply" = "home-manager switch --flake ${userOptions.homeManagerConfigDir}#${hostname}";
       "hm-gc" = "nix-store -gc";
