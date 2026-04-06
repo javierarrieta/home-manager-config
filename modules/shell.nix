@@ -110,6 +110,7 @@
       "hm-apply" = "home-manager switch --flake ${userOptions.homeManagerConfigDir}#${hostname}";
       "hm-gc" = "nix-store -gc";
       "sshe" = "ssh -o \"UserKnownHostsFile=/dev/null\"";
+      "kssh" = "kitten ssh";
     };
   };
 
