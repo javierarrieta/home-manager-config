@@ -55,10 +55,6 @@
     '';
     plugins = [
       {
-        name = "bass";
-        src = pkgs.fishPlugins.bass;
-      }
-      {
         name = "tide";
         src = pkgs.fishPlugins.tide;
       }
