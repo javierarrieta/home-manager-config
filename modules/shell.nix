@@ -4,6 +4,7 @@
   lib,
   userOptions,
   hostname,
+  unstablePkgs,
   ...
 }:
 {
@@ -27,6 +28,7 @@
 
   programs.fish = {
     enable = true;
+    package = unstablePkgs.fish;
     interactiveShellInit = ''
       set fish_greeting
       fish_vi_key_bindings
