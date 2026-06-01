@@ -17,7 +17,14 @@
       enableUpdateCheck = false;
       enableExtensionUpdateCheck = false;
       userSettings = {
+        "extensions.autoCheckUpdates" = false;
         "extensions.autoUpdate" = false;
+        "update.mode" = "none";
+        "yaml.schemas" = {
+          "file:///Users/javier/.vscode/extensions/Continue.continue/config-yaml-schema.json" = [
+            ".continue/**/*.yaml"
+          ];
+        };
       };
       extensions = with unstablePkgsUnfree.vscode-extensions; [
         dracula-theme.theme-dracula
