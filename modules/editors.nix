@@ -20,6 +20,8 @@
         "extensions.autoCheckUpdates" = false;
         "extensions.autoUpdate" = false;
         "update.mode" = "none";
+        "git.confirmPush" = false;
+        "git.confirmPull" = false;
         "yaml.schemas" = {
           "file:///Users/javier/.vscode/extensions/Continue.continue/config-yaml-schema.json" = [
             ".continue/**/*.yaml"
