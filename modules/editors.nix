@@ -23,6 +23,7 @@
         "update.mode" = "none";
         "git.confirmPush" = false;
         "git.confirmPull" = false;
+        "git.confirmSync" = false;
         "yaml.schemas" = {
           "file://${userOptions.userHome}/.vscode/extensions/Continue.continue/config-yaml-schema.json" = [
             ".continue/**/*.yaml"
