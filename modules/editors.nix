@@ -2,6 +2,7 @@
   config,
   pkgs,
   unstablePkgsUnfree,
+  userOptions,
   ...
 }:
 {
@@ -23,7 +24,7 @@
         "git.confirmPush" = false;
         "git.confirmPull" = false;
         "yaml.schemas" = {
-          "file:///Users/javier/.vscode/extensions/Continue.continue/config-yaml-schema.json" = [
+          "file://${userOptions.userHome}/.vscode/extensions/Continue.continue/config-yaml-schema.json" = [
             ".continue/**/*.yaml"
           ];
         };
