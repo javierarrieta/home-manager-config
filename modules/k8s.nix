@@ -9,6 +9,6 @@
     kubectl
     kubectx
     k9s
-    unstablePkgs.llama-cpp
+    llama-cpp
   ];
 }

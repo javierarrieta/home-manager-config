@@ -29,6 +29,7 @@
   programs.fish = {
     enable = true;
     package = unstablePkgs.fish;
+    generateCompletions = false;
     interactiveShellInit = ''
       set fish_greeting
       fish_vi_key_bindings
