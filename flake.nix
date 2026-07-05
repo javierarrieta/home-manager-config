@@ -92,6 +92,10 @@
           hostname = "vps";
           system = "x86_64-linux";
         });
+        wsl = home-manager.lib.homeManagerConfiguration (mkHostConfig {
+          hostname = "wsl";
+          system = "x86_64-linux";
+        });
       };
     };
 }
