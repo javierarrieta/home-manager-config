@@ -1,3 +1,8 @@
+
+> The contents of this repository have been moved to https://github.com/javierarrieta/nixos-configurations and no more updates will be made into this repo.
+
+---
+
 # Modular Home Manager Configuration
 
 This is a modular configuration structure for Home Manager that allows you to use different parts of the configuration across different computers.
